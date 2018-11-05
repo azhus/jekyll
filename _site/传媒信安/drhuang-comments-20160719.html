@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        
+        药师早报 | 安全动态（今日有大事件）
+        
+    </title>
+    
+    <meta name="description" content="CGI应用漏洞，影响PHP、Go、Python等诸多应用，PHP站长必须关注修复方案。Chrome应用商店发现恶意应用，你中招了没有？"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="/resources/css/main.css"/>
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+    
+
+    
+</head>
+<body style="background: url('/resources/images/main_front.jpg') no-repeat fixed;
+                            background-size: cover">
+<div id="wrapper">
+    <header>
+    <nav id="main-nav">
+        <ul>
+            <li><a class="fancy-nav" href="/index.html">home</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/最新公告">最新公告</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/传媒信安">传媒信安</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/课程体系">课程体系</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/example">example</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/信息安全科普">信息安全科普</a></li>
+            
+            <li><a class="fancy-nav" href="/pages/about.html">about</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <main id="start">
+        <div class="articles">
+            <article>
+    <header>
+        
+        <h1>药师早报 | 安全动态（今日有大事件）</h1>
+        
+        <div class="post-meta">
+    <small>
+        <time datetime="19 07 2016">
+            19 July, 2016
+        </time>
+        <span class="tag-sep"> | </span>
+        
+        <a class="comment_count" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/drhuang-comments-20160719#disqus_thread"
+           data-disqus-identifier="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/drhuang-comments-20160719"></a>
+        <span class="tag-sep"> | </span>
+        
+        <nav class="tags">
+    <ul>
+        
+        <li><a href="/tags/传媒信安.html">传媒信安</a><span>&nbsp;&nbsp;</span></li>
+        
+    </ul>
+</nav>
+
+    </small>
+</div>
+
+    </header>
+    <h2 id="cgi应用漏洞影响phpgopython等诸多应用">CGI应用漏洞，影响PHP、Go、Python等诸多应用</h2>
+
+<p>昨天夜里，<a href="https://httpoxy.org/">httpoxy.org</a>披露了一个隐藏在PHP CGI类应用中至少15年的漏洞（有些人总憋着要搞个大新闻），药师看到这个新闻的时候内心是崩溃的：我们的很多站点都是这个架构方案啊，还让不让人睡觉了啊！该漏洞的成因非常简单粗暴，我推测了一下漏洞形成的历史过程大概是这样的：</p>
+
+<ol>
+  <li>CGI的早期规范制定者是一个C语言程序员，为了区分从HTTP请求过来的变量名还是CGI服务器上的系统环境变量，采用了C程序设计习惯统一对从HTTP请求过来的参数变量名添加HTTP_前缀。而对于操作系统上的环境变量名则原汁原味的保留读取。例如：对于一个CGI模式运行的服务端脚本，在获取客户端传送的cookie字段时，是从HTTP_COOKIE这个CGI程序设置的环境变量中读取的。</li>
+  <li>众所周知，Linux系统中，大多数程序会读取HTTP_PROXY这个环境变量（当然，curl和wget读取的是小写的http_proxy环境变量，感谢Linux系统是区分大小写变量名的，在这次的大事件中这俩哥们幸免于难了）作为发起HTTP请求的本地代理服务器地址。</li>
+  <li>突然有一天，一个脑洞大开的黑客想到：如果我在HTTP请求头中构造一个Proxy字段，设置该字段值为我控制的一台服务器脚本地址，发送给CGI程序会怎么样呢？bang！CGI程序果然把这个Proxy字段值按照上述第一条处理规则设置为环境变量HTTP_PROXY了！完美覆盖了系统中原有的HTTP_PROXY环境变量值！</li>
+  <li>有什么危害？举一个栗子：如果被请求的这个服务端脚本代码中包含一段HTTP客户端请求代码（很多第三方应用都是这样调用实现的啊，比如：重置找回密码邮件、发送短信验证码、OAuth认证握手过程等），则这段代码会自动将原本的后端机密请求首先发送到HTTP_RPOXY环境变量设置的代理服务器上！这个代理服务器可是黑客控制的啊！完美中间人攻击啊！验证码、一次性口令直接被发到黑客的服务器上了哦！黑客先看完了再返回给用户的哦！</li>
+</ol>
+
+<p>当然，如果服务应用的接口采用的是https接口，则不受该漏洞影响。原因竟然是因为：CGI程序会把HTTPS请求对应的客户端请求头中的变量名设置为HTTPS_前缀，从而导致HTTP_PROXY这个本地环境变量躲过被覆盖控制。</p>
+
+<p>所以，使用HTTPS在无形中减轻了这个漏洞的影响范围啊有木有？</p>
+
+<p>如果你的服务端脚本还是用的http请求，用Nginx+PHP-FPM的小伙伴，只需修改 <code class="highlighter-rouge">/etc/nginx/fastcgi_params</code> ，增加以下一行代码就可以临时修复掉这个漏洞（但同时可能会影响到部分依赖于HTTP_RPOXY这个环境变量的应用）：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fastcgi_param HTTP_PROXY "";
+</code></pre></div></div>
+
+<p>使用其他CGI方式运行服务器脚本的小伙伴请移步<a href="https://httpoxy.org">httpoxy.org</a>官网获取漏洞修补方案。</p>
+
+<h2 id="chrome应用商店发现恶意应用你中招了没有">Chrome应用商店发现恶意应用，你中招了没有？</h2>
+
+<p>新闻来源在这里<a href="https://kjaer.io/extension-malware/">Malware in the browser: how you might get hacked by a Chrome extension 2016-07-18</a>，画面太污，我就不转载原文了。请阅读原文，买票上车。恶意插件的作者充分利用了一小部分猎奇网友的好奇心理，在插件中埋入远程控制代码，实现对中招用户的浏览器中机密数据偷取、控制发动DDoS攻击、刷票、刷粉丝等等。</p>
+
+<p>互联网很好，也不要贪杯哦，小心身体被掏空的同时自己的隐私也被扒干净、电脑也沦为一大波僵尸肉鸡中的一员。</p>
+
+    <footer>
+        
+        <div id="disqus_thread"></div>
+<script>
+    /**
+     * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    var disqus_developer = 1;
+    var disqus_config = function () {
+        this.page.url = 'http://localhost:4000/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/drhuang-comments-20160719';
+        this.page.identifier = '/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/drhuang-comments-20160719';
+        this.page.title = "药师早报 | 安全动态（今日有大事件）";
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        
+    </footer>
+</article>
+
+        </div>
+    </main>
+        <nav class="paginator">
+    <ul>
+        
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/drhuang-comments-20160714">&lt;&nbsp;Previous</a></li>
+        
+        <li class="sep">&nbsp;</li>
+        <li><a class="fancy-nav" href="#">Top</a></li>
+        <li class="sep">&nbsp;</li>
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/mr-robots-2">Next&nbsp;&gt;</a></li>
+        
+        
+    </ul>
+</nav>
+
+    <footer>
+        
+<blockquote id="footer-quote">
+    <p>
+        
+        Some fancy quote
+        
+    </p>
+    <footer>
+        <cite>
+        
+        - John Doe
+        
+    </cite>
+    </footer>
+</blockquote>
+
+<div id="footer-main">
+    <small>
+        &copy; 2016 Name Surname. ALL RIGHTS RESERVED.
+    </small>
+</div>
+
+    </footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        
+        看剧学安全 | 科普《The Call》中的手机定位跟踪原理
+        
+    </title>
+    
+    <meta name="description" content="不知道大家有没有一秒钟想过，假如有一天自己突然被绑架或者走失了，要怎么样获救？当自己都不知道自己身在何处时，更没办法主动告诉别人自己在哪的时候，要怎么通过身上带着的手机信号来让自己获救呢？也许由哈莉·贝瑞主演的电影：《致命呼叫 （The Call）》里的凯西可以告诉你。。"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="/resources/css/main.css"/>
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+    
+
+    
+</head>
+<body style="background: url('/resources/images/main_front.jpg') no-repeat fixed;
+                            background-size: cover">
+<div id="wrapper">
+    <header>
+    <nav id="main-nav">
+        <ul>
+            <li><a class="fancy-nav" href="/index.html">home</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/最新公告">最新公告</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/传媒信安">传媒信安</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/课程体系">课程体系</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/example">example</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/信息安全科普">信息安全科普</a></li>
+            
+            <li><a class="fancy-nav" href="/pages/about.html">about</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <main id="start">
+        <div class="articles">
+            <article>
+    <header>
+        
+        <h1>看剧学安全 | 科普《The Call》中的手机定位跟踪原理</h1>
+        
+        <div class="post-meta">
+    <small>
+        <time datetime="06 05 2016">
+            06 May, 2016
+        </time>
+        <span class="tag-sep"> | </span>
+        
+        <a class="comment_count" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/the-call-GPS#disqus_thread"
+           data-disqus-identifier="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/the-call-GPS"></a>
+        <span class="tag-sep"> | </span>
+        
+        <nav class="tags">
+    <ul>
+        
+        <li><a href="/tags/传媒信安.html">传媒信安</a><span>&nbsp;&nbsp;</span></li>
+        
+    </ul>
+</nav>
+
+    </small>
+</div>
+
+    </header>
+    <p>不知道大家有没有一秒钟想过，假如有一天自己突然被绑架或者走失了，要怎么样获救？当自己都不知道自己身在何处时，更没办法主动告诉别人自己在哪的时候，要怎么通过身上带着的手机信号来让自己获救呢？也许由哈莉·贝瑞主演的电影：《致命呼叫 （The Call）》里的凯西可以告诉你。</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/hh1.jpg" alt="" /></p>
+
+<p>特纳（哈莉·贝瑞 Halle Berry 饰）是一名911报案中心的接线员，一天她接到一个小女孩的电话，声称有陌生人闯入家中，特纳随即让她躲起来，然而此时通话突然断线，特纳焦急地回拨，不料却因此暴露了女孩的躲藏地，然后绑匪就直接撕票了！！从此特纳陷入愧疚的深渊。半年后，一个叫做凯西的女孩在停车场被绑架了，她被甩在了汽车的后备箱里。在后备箱中，凯西用朋友的备机打电话报的警。而此刻的特纳发现歹徒竟然就是当年杀死那个小女孩的凶手，她也突然意识到，自己只有先稳住这个女孩的情绪，并且和连环杀手进行缓慢的谈判才有可能避免惨剧再次发生。于是，一场用电话连线的心理战，警方对人质的追寻战便在911的话务中心上演了……</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/hh2.jpg" alt="" /></p>
+
+<p>影片中让人心提到嗓子眼的情节莫过于凯西打的那一通求救电话。由于凯西的手机被绑匪摔坏了，拨打报警电话时用的手机是朋友为了和男友联系偷偷购买的一款预付款付费手机，电影中的原话是这样的：“由于手机是预付费的，所以无法用定位系统实时定位拨打电话的位置，只能通过方圆5公里范围内的信号发射塔来锁定大致位置。”</p>
+
+<p>那么这里就涉及到警方是如何通过一通电话来进行手机定位的问题了。这里的手机可以被定位的关键不是手机卡是不是预付模式，而是手机里的GPS芯片。</p>
+
+<p><strong>手机GPS芯片</strong></p>
+
+<p>如果手机带有辅助定位A-GPS功能，它就会连接GPRS网络来快速的确定你大概位置，然后就可以实现GPS的快速初始化，在3-5分钟内锁定卫星信号，确定你的位置。(需要处于开机状态,并且开启了GPS,或插入了SIM卡,并且正常接入运营商网络)</p>
+
+<p>在美国的电信运营商中也有部分手机卡是被当做快速消费品来使用的，而这种快速消费品的手机卡，一般赠送或是配备的手机都是比较低端的廉价机型，而这种廉价机型由于价格的限制基本都不会配备GPS芯片，所以才会出现电影中的情节，需要通过附近的信号发射塔（也就是基站）来锁定大致位置。</p>
+
+<p><strong>信号发射塔SIM卡追踪</strong></p>
+
+<p>那么不带有GPS功能的手机，又是如何追踪到使用者的位置的呢？实际上是通过基站SIM卡追踪定位的。信号发射塔（基站）定位需要SIM信号来源，所以只要手机有供电有SIM卡就有可能被信号发射塔（基站）定位到。</p>
+
+<p>由于影片中的女主角是被绑架在车子的后备箱中，而车子又是在高速公路上以每小时100KM+的时速在前进。这时候她拨打的电话，会随着移动车子的移动每4分钟左右（每分钟1.6公里）更换一次接入的手机信号发射塔。而信号发射塔会在其覆盖范围内发射信号出去，美国的911或是国内的110就是通过这种锁定SIM卡的方式来大致定位手机使用者的范围是否在方圆5公里之内，然后在根据位置采取行动。在中国城市里仅仅通过基站数据是能定位到十米以内的。</p>
+
+<p><em>简单来说，就是如果手机自身不带有GPS功能，那就无法被GPS定位系统定位；如果手机有GPS功能，不仅仅是在你拨打电话时候才能被定位，理论上是谁只要你打开手机，就是可以被定位的。如果要通过SIM卡定位，必须要保证手机在有信号且确实在拨打状态下接入了某个信号发射塔的情况下，才能进行大致方向的定位。</em></p>
+
+<p><strong>WIFI定位</strong></p>
+
+<p>除了影片中所涉及的以上两种定位方法，还有一种通过WIFI热点来定位的定位方法。通过wifi热点来计算方位，是室内定位的最关键依靠，最省电，且能提供接近GPS的精度。</p>
+
+<p>这个方法仅适用于wifi热点密集的区域，通常是城市的闹市区。这就是为什么我们一直强调不要连接公共区域里免费WiFi，别人随随便便就可以通过软件定位到你的大致方向，泄露了信息安全也许只是损失些钱财，泄露了人身安全那就是真的非常不安全了！</p>
+
+<p><strong>三种方法目前国内几大平台的手机都在使用</strong></p>
+
+<p>这就引发了一些可爱的网民的担忧：我关机了还能被追踪么？那我想静一静怎么办？电影里的关机逃跑都是骗人的么？？！</p>
+
+<p>答曰：对，就是骗你的。</p>
+
+<p>至于为什么不拆卸分离SIM卡或电池，手机关机后仍然可以被搜索定位？知乎大牛是这么总结的：</p>
+<blockquote>
+
+  <p>手机要联网是需要和基站通信的，基站为了认识手机就需要手机提供机身的唯一识别码。网络为了能够给手机计费（有人会说要加密，但其实现在国内网络基本没有利用SIM进行通信加密）则需要手机有SIM卡，SIM卡里面有用于计费的唯一身份码，这个码对应到电话号码。只要知道哪个基站联络过你的手机，你的位置就被限定在一个很小的范围内了。</p>
+
+  <p>所以为什么插不插SIM卡都一样？因为手机只要开机就会试图去注册网络，要注册网络就先联络基站，基站就认识了手机了，然后才是因为没有SIM注册不上网络。没有SIM最多保证不能直接通过监听号码的方式找到手机，但是只要调查和号码发生关联的手机的ID，就能找到你的手机曾经在哪里开机。</p>
+
+  <p>再来说不拔电池为什么会发现。就目前我所知道的消费手机中，没有手机有设计关机状态下联网的功能。但是有很多很多工具软件可以用来“改造”一台手机令其在关机状态下试图联网。iPhone上的这类软件特别多，功能强大而且价格也非常贵（当然是正版），但是经常有私家侦探之类的人拿来追踪手机（当然是盗版）。有人可能要问为什么关机状态下还能联网？因为电池还连着，只要假装给你看好像关机了。</p>
+
+  <p>至于WIFI定位，关机后是无法做到网络连接的，所以也就无法通过这一方法被定位了。</p>
+</blockquote>
+
+<p>所以真的想“一个人静一静”，最好的办法就是像电视剧里的那样装逼装到底：潇洒的，<strong>拔电池啊！！！</strong>或者，<strong>扔了你手机啊！！</strong>！</p>
+
+<p><strong>手机定位的好处</strong></p>
+
+<p>保护好自己的行踪安全是一方面，当我们遇到危险时利用手都上的现有产品所提供的科技技术自救才是它正确的使用方法。</p>
+
+<p>比如，手机定位在帮助遇险人员脱困并协助警方获得有利信息方面，还是起了一定的积极作用的。</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/hh3.png" alt="" /> 
+<img src="http://127.0.0.1:4000//resources/images/hh4.png" alt="" /></p>
+
+<p>那句话怎么说来着？没有谁是谁的救世主，关键时刻能救自己的只有自己！你得伸出手，别人才能拉你一把啊~</p>
+
+<p>总的来说，这部剧跟大S的《保持通话》有点类似，堪称被绑架自救的教科书啊，也是救人的教科书！同时告诉我们，拥有一部超长续航能力的手机是<strong>多！么！的！重！要！</strong></p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/hh5.jpeg" alt="" /> 
+​
+吓得小编赶紧翻出抽屉里的那一款珍藏的诺基亚板砖，充充电还是能用的！！</p>
+
+<p>PS.剧中部分镜头过于血腥，比如撕票啊啥啥的，女生不要自己一个人看，请拉一个皮糙肉厚的娃陪你，哈哈哈哈哈！你懂的！死劲掐！！胆大的妹妹你大胆地往前走~嘿！往前走。小朋友请在监护人陪同下观看。</p>
+
+<p>更详细的原理，请看<a href="http://drops.wooyun.org/tips/10580">劫持GPS定位&amp;劫持WIFI定位</a></p>
+
+<p>参考资料：</p>
+
+<p>1.<a href="https://movie.douban.com/subject/10554990/">致命呼叫 The Call</a></p>
+
+<p>2.<a href="https://www.zhihu.com/question/23048526">不拆卸分离 SIM 卡或电池，手机关机后还是可以被搜索定位吗？</a></p>
+
+<p>3.<a href="https://www.zhihu.com/question/21608398">现在手机的定位功能是通过什么技术实现的？</a></p>
+
+    <footer>
+        
+        <div id="disqus_thread"></div>
+<script>
+    /**
+     * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    var disqus_developer = 1;
+    var disqus_config = function () {
+        this.page.url = 'http://localhost:4000/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/the-call-GPS';
+        this.page.identifier = '/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/the-call-GPS';
+        this.page.title = "看剧学安全 | 科普《The Call》中的手机定位跟踪原理";
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        
+    </footer>
+</article>
+
+        </div>
+    </main>
+        <nav class="paginator">
+    <ul>
+        
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/imagemagick-cve-2016-3714">&lt;&nbsp;Previous</a></li>
+        
+        <li class="sep">&nbsp;</li>
+        <li><a class="fancy-nav" href="#">Top</a></li>
+        <li class="sep">&nbsp;</li>
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/voice_attack">Next&nbsp;&gt;</a></li>
+        
+        
+    </ul>
+</nav>
+
+    <footer>
+        
+<blockquote id="footer-quote">
+    <p>
+        
+        Some fancy quote
+        
+    </p>
+    <footer>
+        <cite>
+        
+        - John Doe
+        
+    </cite>
+    </footer>
+</blockquote>
+
+<div id="footer-main">
+    <small>
+        &copy; 2016 Name Surname. ALL RIGHTS RESERVED.
+    </small>
+</div>
+
+    </footer>
+</div>
+
+</body>
+</html>

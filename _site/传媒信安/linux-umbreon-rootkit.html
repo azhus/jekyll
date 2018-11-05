@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        
+        信安武林 | 去吧，皮卡丘！
+        
+    </title>
+    
+    <meta name="description" content="如今是个电子现金时代，大家身上都不会装大量现金，这种时代特征让小偷这个职业似乎走向了陌路。可是，如果小偷这个职业也与时俱进，进化出一只能偷走你电子现金的无形之手，又该如何防范呢？"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="/resources/css/main.css"/>
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+    
+
+    
+</head>
+<body style="background: url('/resources/images/main_front.jpg') no-repeat fixed;
+                            background-size: cover">
+<div id="wrapper">
+    <header>
+    <nav id="main-nav">
+        <ul>
+            <li><a class="fancy-nav" href="/index.html">home</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/最新公告">最新公告</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/传媒信安">传媒信安</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/课程体系">课程体系</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/example">example</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/信息安全科普">信息安全科普</a></li>
+            
+            <li><a class="fancy-nav" href="/pages/about.html">about</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <main id="start">
+        <div class="articles">
+            <article>
+    <header>
+        
+        <h1>信安武林 | 去吧，皮卡丘！</h1>
+        
+        <div class="post-meta">
+    <small>
+        <time datetime="11 09 2016">
+            11 September, 2016
+        </time>
+        <span class="tag-sep"> | </span>
+        
+        <a class="comment_count" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/linux-umbreon-rootkit#disqus_thread"
+           data-disqus-identifier="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/linux-umbreon-rootkit"></a>
+        <span class="tag-sep"> | </span>
+        
+        <nav class="tags">
+    <ul>
+        
+        <li><a href="/tags/传媒信安.html">传媒信安</a><span>&nbsp;&nbsp;</span></li>
+        
+    </ul>
+</nav>
+
+    </small>
+</div>
+
+    </header>
+    <p>火遍全球的一款游戏Pokemon不仅成功造就了一大批走路低头族，其话题度也一直在游戏界中居高不下，无论是被指“间谍软件”，还是从贾斯汀·比伯到希拉里·克林顿的青睐，一直热议傍身。</p>
+
+<p>这不，Pokemon的一名忠实粉丝就以Pokemon的月精灵Umbreon为主题开发出一个新的Linux rootkit病毒。</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/f1.gif" alt="" /></p>
+
+<p>这确定不是Pokemon在信安界的一次广告植入？？？</p>
+
+<p>该新闻首先由TrendMicro的前瞻性威胁研究小组曝出，他们从一个可信任的合作伙伴那里获得了这个新的rootkit病毒家族样本 (ELF_UMBREON family)。</p>
+
+<p>鹅妹子因！！！好想知道这个小伙伴是谁？</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/f2.jpg" alt="" /></p>
+
+<p>该病毒目标就是针对Linux系统，包括嵌入式设备和其他任何运行Intel和ARM处理器的系统。</p>
+
+<p>Umbreon的开发始于2015年年初，但开发者VXer至少自2013年就开始在地下进行网络犯罪，Umbreon早已被地下论坛和IRC频道的地下工作者说是防不胜防的。</p>
+
+<p><strong>那么Umbreon是如何做到逃避检测、隐于无形的呢？</strong></p>
+
+<h3 id="不容小觑的ring3级别rootkit">不容小觑的ring3级别rootkit</h3>
+
+<p><img src="http://127.0.0.1:4000//resources/images/f3.jpg" alt="" /></p>
+
+<p>rootkit因其难被检测而被标为病毒界的顽固分子，深藏功与名，目的就是要在与管理员、分析师、用户、扫描器、电脑医生以及系统工具过完招后，成功驻留下来。当然，rootkit并不是真正的隐逸者，而是会植入一个后门、使用命令控制服务器（C&amp;C server，即command&amp;control server）来控制和监听被感染机器。</p>
+
+<p>当然，代码的运行模式可以分为以下几个等级：</p>
+
+<ul>
+  <li>用户模式（ring3）</li>
+  <li>内核模式（ring0）</li>
+  <li>虚拟机管理程序（ring-1）</li>
+  <li>系统管理模式（ring-2）</li>
+</ul>
+
+<p>通过在一些母板或其他设备上运行该rootkit，研究人员发现它是一个ring3级别的病毒，虽然级数越低，越难检测和防御，但不代表一个ring3级别的rootkit就很好对付哟！</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/f4.jpg" alt="" /></p>
+
+<p>ring3 rootkit（或用户态高级木马）不会加载内核（新）对象到系统（运行时）。</p>
+
+<blockquote>
+  <p>ring3的rootkit不需要以驱动程序模式运行，没有运行在ring0级别的代码，通常在稳定性和兼容性方面会比ring0级别rootkit更好。换句话来说，ring3级别的木马更容易实现与系统中其他程序“和平共处”，很少造成系统运行“卡、慢、顿”，从而避免系统管理员通过常规性能监控发现系统异常。</p>
+</blockquote>
+
+<p>但是它可以利用hook技术调用系统提供给应用程序执行重要操作的的核心库功能的接口，例如文件读写操作、生成进程或者通过网络发送数据包。</p>
+
+<h3 id="跨平台宝宝就是这么任性">跨平台，宝宝就是这么任性</h3>
+
+<p>该rootkit纯c语言编写，除了一些扩展工具是用Python和bash脚本编写的。</p>
+
+<p>研究者发现它可以在x86、x86-64以及ARM（树莓派就使用了ARM架构的CPU）三个平台上成功运行，当然，ring3级别代码本来就不依赖于特定平台，十分便携。</p>
+
+<p>这么做，当然是开发者有意为之啦，嘿嘿，就是这么任性！</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/f4.gif" alt="" /></p>
+
+<h3 id="江湖必杀技之后门认证">江湖必杀技之后门认证</h3>
+
+<p>安装过程中，Umbreon创建一个空的Linux用户以便于攻击者可以控制系统，该后门账户可以通过任何Linux可插入认证模块（PAM）支持的认证方式通过认证，包括SSH。</p>
+
+<p>这个用户有一个特殊的组ID（GID），用于该rootkit检查是否有攻击者试图进入系统。当然，在/etc/passwd下是看不到这个用户的，因为libc（C标准库）功能函数已经被Umbreon给hook了。</p>
+
+<p>下图显示的是后门帐号通过SSH成功登入系统显示的欢迎界面~~~</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/f5.png" alt="" /></p>
+
+<h3 id="espeon后门程序">Espeon后门程序</h3>
+
+<p>Espeon中文是<strong>太阳精灵</strong>的意思，总之，为了凑一对，这位粉丝开发者真是辛苦了。。。</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/f6.jpg" alt="" /></p>
+
+<p>Espeon这是个纯用C语言编写的基于libpcap的后门程序，当已认证用户连接它时，会生成一个shell。它可以通过指令连接到一个攻击者的机器，作为一个绕过防火墙的反向shell。</p>
+
+<p>Espeon可以捕捉到所有到达被害主机的主以太网接口的TCP流量，一旦接收到具有特殊字段的数据包，它就会回连到这个数据包的源IP地址，以下列出了Espeon设置的自动回连触发条件包含的报文特征字段：</p>
+
+<ul>
+  <li>Sequence number (SEQ)：0xc4</li>
+  <li>Acknowledgement number (ACK)：0xc500</li>
+  <li>IP Identification (ID)：0x0fb1</li>
+</ul>
+
+<p>攻击者会在发送给目标机器的数据包中设置这些条件，如果这三个值都匹配，后门就会回连到这个IP地址。</p>
+
+<h3 id="如何检测umbreon">如何检测Umbreon？</h3>
+
+<p>正所谓山外有山、天外有天，黑客外除了有黑客，还有正义之士！！！</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/f7.jpg" alt="" /></p>
+
+<p>咳咳~直接切入正题哈，你会发现Linux系统中大多数的工具都是用c语言编写的，甚至用Perl、Python、Ruby、PHP等其他脚本语言编写的最终会都调用GNU C库包装它们的接口（用c编写的），因为Umbreon的库hook了libc功能函数，所以为了检测Umbreon，必须开发出一个不用libc的可靠工具。</p>
+
+<p>有一个方法就是开发一个小工具，可以列举出Umbreon rootkit调用了Linux系统内核的文件夹的内容。这样就可以绕过任何Umbreon安装的恶意的c库，如果输出包含一个或多个名字以libc.so开始，紧跟着一个随机整数的文件，这就表示你这个系统已经中招了！！！</p>
+
+<p>当然，大牛们已经编写出了可以检测这个病毒<strong>YARA 规则</strong>~~~，<a href="http://documents.trendmicro.com/assets/20160905-umbreon-yara.txt">下载</a></p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/f8.jpg" alt="" /></p>
+
+<p>那么问题来了！神马是YARA 规则呢？</p>
+
+<blockquote>
+  <p>萌主科普：YARA 规则可基于文本或二进制模式创建恶意软件家族描述信息，是帮助恶意软件研究人员识别和分类恶意软件样本的开源工具，属于一种静态分析工具。</p>
+</blockquote>
+
+<p>YARA的规则可以复杂和强大到支持通配符、大小写敏感字符串、正则表达式、特殊符号以及规则的按条件与或非组合。具体可以应用到恶意软件的基于签名的检测、VirusTotal私有API使用自己编写的规则与样本进行匹配、配置ClamAV数据库的扩展功能以支持自己提供YARA规则等。</p>
+
+<h3 id="删除指导手册跟着我左手右手一个慢动作">删除指导手册（跟着我左手右手一个慢动作）</h3>
+
+<p>Umbreon是一个ring3（用户级别）的rootkit，因此是可以将其删除的。但是，可能比较棘手，对于没有经验的用户这么做可能会破坏系统，并把它变成一个不可恢复的状态。如果你是一只壕并且有足够的勇气来进行，最简单的方式是用Linux的LiveCD启动你那被感染的机器，并按照以下步骤：</p>
+
+<ul>
+  <li>在/usr目录下挂载分区，需要写操作的权限。</li>
+  <li>更改文件前先备份备份。</li>
+  <li>删除文件/etc/ld.so.<随机生成的字符串>。</随机生成的字符串></li>
+  <li>删除目录/usr/lib/libc.so.<随机生成的字符串>。</随机生成的字符串></li>
+  <li>恢复文件的属性/usr/share/libc.so.<random>.<arch>.*.so并删除它们。</arch></random></li>
+  <li>补丁loader库以便再次使用/etc/ld.so.preload。</li>
+  <li>卸载分区并重新正常启动系统。</li>
+</ul>
+
+<p>举一个真实的栗子（请注意文件名会有所不同，因为是恶意软件随机选择的）。以下，/dev/sda1目录是包含分区/usr的。</p>
+
+<blockquote>
+  <p>mount /dev/sda1 /mnt
+   rm -f /mnt/etc/ld.so.khVrkEQ
+   rm -rf /mnt/usr/lib/libc.so.41762810374176281037/
+   chattr -ai /mnt/usr/share/libc.so.4176281037.*
+   rm -f /mnt/usr/share/libc.so.4176281037.*
+   sed -i ‘s:/etc/ld.so.khVrkEQ:/etc/ld.so.preload:’ /lib/x86_64-linux-gnu/         ld-2.19.so
+   umount /mnt
+  reboot</p>
+</blockquote>
+
+<font color="red">**到此，这个ring3级别的rootkit也只是和大家大致的讲了一讲，此次事件盟主感觉还是学到了不少东西哒~~~**</font>
+
+<p>没看懂？</p>
+
+<p>没关系！</p>
+
+<p>遇到不认识的技术术语<strong>Google</strong>一下就知道啦！</p>
+
+<h5 id="参考文献">参考文献</h5>
+
+<ul>
+  <li><a href="http://securityaffairs.co/wordpress/51003/breaking-news/linux-umbreon-rootkit.html">Pokemon-fan VXer developed the Linux Umbreon rootkit</a></li>
+  <li><a href="http://blog.trendmicro.com/trendlabs-security-intelligence/pokemon-themed-umbreon-linux-rootkit-hits-x86-arm-systems/">Pokémon-themed Umbreon Linux Rootkit Hits x86, ARM Systems</a></li>
+  <li><a href="https://securityintelligence.com/signature-based-detection-with-yara/">Signature-Based Detection With YARA</a></li>
+  <li><a href="http://virustotal.github.io/yara/">Yara - GitHub Pages</a></li>
+  <li><a href="http://whatis.techtarget.com/definition/command-and-control-server-CC-server">command-and-control server (C&amp;C server)</a></li>
+</ul>
+
+    <footer>
+        
+        <div id="disqus_thread"></div>
+<script>
+    /**
+     * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    var disqus_developer = 1;
+    var disqus_config = function () {
+        this.page.url = 'http://localhost:4000/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/linux-umbreon-rootkit';
+        this.page.identifier = '/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/linux-umbreon-rootkit';
+        this.page.title = "信安武林 | 去吧，皮卡丘！";
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        
+    </footer>
+</article>
+
+        </div>
+    </main>
+        <nav class="paginator">
+    <ul>
+        
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/cuc-information-security-mail-2016">&lt;&nbsp;Previous</a></li>
+        
+        <li class="sep">&nbsp;</li>
+        <li><a class="fancy-nav" href="#">Top</a></li>
+        <li class="sep">&nbsp;</li>
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/introduction-on-social-engineering">Next&nbsp;&gt;</a></li>
+        
+        
+    </ul>
+</nav>
+
+    <footer>
+        
+<blockquote id="footer-quote">
+    <p>
+        
+        Some fancy quote
+        
+    </p>
+    <footer>
+        <cite>
+        
+        - John Doe
+        
+    </cite>
+    </footer>
+</blockquote>
+
+<div id="footer-main">
+    <small>
+        &copy; 2016 Name Surname. ALL RIGHTS RESERVED.
+    </small>
+</div>
+
+    </footer>
+</div>
+
+</body>
+</html>

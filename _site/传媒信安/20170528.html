@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        
+        网安一周传说 | 第Ⅻ期
+        
+    </title>
+    
+    <meta name="description" content="1. 18个字节的概念验证攻击代码换来官方28000美刀的漏洞发现赏金！ImageMagick 漏洞究竟是怎么一回事？2. 针对视频播放器的漏洞攻击事件！一条字幕就能黑了你的电脑和手机3. 全设备接管攻击，安卓手机将无一幸免（附演示视频）4. Linux版本的永恒之蓝：“SambaCry”？5. 小心咖啡馆：移动安全威胁潜伏在每一个角落"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="/resources/css/main.css"/>
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+    
+
+    
+</head>
+<body style="background: url('/resources/images/main_front.jpg') no-repeat fixed;
+                            background-size: cover">
+<div id="wrapper">
+    <header>
+    <nav id="main-nav">
+        <ul>
+            <li><a class="fancy-nav" href="/index.html">home</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/最新公告">最新公告</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/传媒信安">传媒信安</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/课程体系">课程体系</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/example">example</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/信息安全科普">信息安全科普</a></li>
+            
+            <li><a class="fancy-nav" href="/pages/about.html">about</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <main id="start">
+        <div class="articles">
+            <article>
+    <header>
+        
+        <h1>网安一周传说 | 第Ⅻ期</h1>
+        
+        <div class="post-meta">
+    <small>
+        <time datetime="28 05 2017">
+            28 May, 2017
+        </time>
+        <span class="tag-sep"> | </span>
+        
+        <a class="comment_count" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/20170528#disqus_thread"
+           data-disqus-identifier="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/20170528"></a>
+        <span class="tag-sep"> | </span>
+        
+        <nav class="tags">
+    <ul>
+        
+        <li><a href="/tags/传媒信安.html">传媒信安</a><span>&nbsp;&nbsp;</span></li>
+        
+    </ul>
+</nav>
+
+    </small>
+</div>
+
+    </header>
+    <p><strong>安全事件天天有，</strong>
+<strong>传媒信安周周说。</strong>
+<strong>一朝阅尽天下事，</strong>
+<strong>运筹帷幄隆中坐。</strong></p>
+
+<hr />
+
+<h5 id="一周要闻概览">一周要闻概览：</h5>
+
+<ol>
+  <li>18个字节的概念验证攻击代码换来官方28000美刀的漏洞发现赏金！ImageMagick 漏洞究竟是怎么一回事？</li>
+  <li>针对视频播放器的漏洞攻击事件！一条字幕就能黑了你的电脑和手机</li>
+  <li>全设备接管攻击，安卓手机将无一幸免（附演示视频）</li>
+  <li>Linux版本的永恒之蓝：“SambaCry”？</li>
+  <li>小心咖啡馆：移动安全威胁潜伏在每一个角落</li>
+</ol>
+
+<hr />
+
+<h3 id="雅虎滴血1号yahoobleed-1漏洞让知名图像处理开源软件-imagemagick-在雅虎内部被强制停用"><a href="http://www.zdnet.com/article/yahoo-retires-imagemagick-library-after-18-byte-exploit-leaks-user-email-content/">“雅虎滴血1号”（Yahoobleed #1）漏洞让知名图像处理开源软件 ImageMagick 在雅虎内部被强制停用</a></h3>
+
+<h3 id="推荐理由">推荐理由</h3>
+
+<blockquote>
+  <p>漏洞发现者用18个字节的概念验证攻击代码换来官方28000美刀的漏洞发现赏金，平均一个字节代码价值1万元人民币！各位服务端开发和运维的小伙伴们，如果你们的产品中有用到 ImageMagick，那么请关注我们的持续跟踪报道。不用 ImageMagick，服务端图像处理还有什么靠谱的开源解决方案？其他还在用 ImageMagick 作为服务端图像处理解决方案的其他互联网厂商们该怎么办？坐等新的一波服务端大规模盗号事件发生吗？（不要忘了2014年4月震惊全球的“心脏滴血”漏洞爆发事件）</p>
+</blockquote>
+
+<h3 id="点评">点评</h3>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td>我们在3月份的[网安一周传说</td>
+        <td>第Ⅱ期](http://sec.cuc.edu.cn/CUCIS/post/20170319) 刚刚报道了《雅虎“一键执行”造成的重大数据泄漏事件》，这一次虽然是白帽子黑客负责任的漏洞纰漏（3月就被秘密报告给了雅虎，当时就被<a href="http://git.imagemagick.org/repos/ImageMagick/commit/1c358ffe0049f768dd49a8a889c1cbf99ac9849b">一行代码给修复了</a> ），但随着这则新闻的纰漏，相信一大波1 day漏洞利用爱好者们很快就会蜂拥而上编写批量漏洞利用程序满互联网扫描刺探用户秘密信息了。</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<blockquote>
+  <p>漏洞利用效果非常隐蔽：攻击者通过邮件或者其他任何可以向服务器上传图片的机会，发送一个包含攻击代码的图片，如果服务端使用 ImageMagick 对图片进行重新渲染处理（几乎所有的互联网应用服务端都会对用户上传的图片进行重新渲染，比如伟大的微信），那么攻击者只需要自己在线查看一下刚才上传的图片，就会获得服务器在刚刚图片渲染过程中随机读取到的服务端内存中的一段未初始化内存的内容。如此反复，攻击者不断上传图片，服务器就会不断把服务器内存里的数据“填入”攻击者构造出来的这个“畸形图片文件黑洞”，攻击者要做的事情就是把这个“黑洞”再下载回来，剩下的事情就是一个碎片拼图的过程，逐步还原出服务器内存中的大片数据。整个过程，服务器不卡、不顿、不死机，真正的和谐数据窃取过程，神不知鬼不觉。</p>
+</blockquote>
+
+<p><strong>推荐 By 黄药师</strong></p>
+
+<h3 id="震惊看场电影电脑竟然被字幕文件给黑了"><a href="http://thehackernews.com/2017/05/movie-subtitles-malware.html">震惊！看场电影电脑竟然被字幕文件给黑了！</a></h3>
+
+<h3 id="点评-1">点评</h3>
+<blockquote>
+  <p>即使是一个小小的字幕文件，也不能掉以轻心</p>
+</blockquote>
+
+<h3 id="推荐理由-1">推荐理由</h3>
+<blockquote>
+  <p>Check Point 的一组研究人员已经在四种最为流行的媒体播放器发现了一个漏洞，它可以被黑客利用一个植入恶意代码的字幕文件黑掉任意类型的设备，不管是你的电脑，智能电视，还是你的手机。</p>
+</blockquote>
+
+<blockquote>
+  <p>这四款流行播放器分别为 VLC、Kodi (XBMC)、Popcorn Time 和 Stremio。它们的下载量已突破2.2亿次。</p>
+</blockquote>
+
+<blockquote>
+  <p>更可怕的是，研究人员发现，恶意字幕文件可以绕过安全软件自动分发给数百万台设备。甚至，还可以通过操纵网站的排名算法，把恶意字幕文件变成媒体播放器自动下载的字幕文件，让人防不胜防。</p>
+</blockquote>
+
+<blockquote>
+  <p>目前研究人员已经将相关漏洞告知了这四家播放器的开发人员，开发人员也用最快的速度修复了这个漏洞。我们需要做的，就是尽快升级播放器到最新的版本了。</p>
+</blockquote>
+
+<h3 id="参考链接">参考链接</h3>
+<ul>
+  <li>http://thehackernews.com/2017/05/movie-subtitles-malware.html</li>
+</ul>
+
+<p><strong>推荐 By 黄药师&amp;kami</strong></p>
+
+<h3 id="全设备接管攻击安卓手机将无一幸免附演示视频"><a href="http://thehackernews.com/2017/05/android-hacking-technique.html">全设备接管攻击，安卓手机将无一幸免（附演示视频）</a></h3>
+
+<h3 id="点评-2">点评</h3>
+<blockquote>
+  <p>新攻击手段名为“Cloak &amp; Dagger”，安卓7.1.2及其以下版本全军覆没，可以悄无声息的占领你的设备之后盗取数据，包括键盘截获、聊天记录、锁屏密码、网络上的账户密码、联系人等。坑爹的是，Google 表示无法修复，至少短期内不太可能…</p>
+</blockquote>
+
+<h3 id="推荐理由-2">推荐理由</h3>
+<blockquote>
+  <p>这种攻击手段不基于安卓生态圈中的任何漏洞，而是通过滥用了一对合法的应用程序权限，颇为流行的 App 都广泛使用该权限以访问 Android 设备上的一些特定功能，这两个基本权限是：</p>
+</blockquote>
+
+<ul>
+  <li>SYSTEM_ALERT_WINDOW (“draw on top”)</li>
+  <li>BIND_ACCESSIBILITY_SERVICE (“a11y”)</li>
+</ul>
+
+<blockquote>
+  <p>第一个权限是允许 App 能重叠在设备屏幕上或其他App页面上，第二个权限是专门帮助残疾人士的，可以让盲人或一些视障用户可以输入语音指令或者使用屏幕阅读功能听到内容。</p>
+</blockquote>
+
+<blockquote>
+  <p>由于攻击者不需要任何恶意代码来执行木马程序，黑客能够轻轻松松开发出这样一个恶意程序，还不会被谷歌商城检测到，本来安卓市场的安全管理机制就不够，所以小伙伴们更要注意啦</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>以下是对安卓用户产生一万点暴击的演示视频</p>
+  </li>
+  <li>键盘截获
+    <ul>
+      <li>https://v.qq.com/x/page/b0507qduotb.html</li>
+    </ul>
+  </li>
+  <li>恶意软件静默安装
+    <ul>
+      <li>https://v.qq.com/x/page/w0507v91nv8.html</li>
+    </ul>
+  </li>
+  <li>盗取账户密码
+    <ul>
+      <li>https://v.qq.com/x/page/g0507i61d5p.html</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="参考链接-1">参考链接</h3>
+
+<ul>
+  <li>http://thehackernews.com/2017/05/android-hacking-technique.html</li>
+</ul>
+
+<p><strong>推荐 By YUE萌主</strong></p>
+
+<h3 id="漏洞预警--潜伏七年的-samba--远程代码执行漏洞"><a href="http://thehackernews.com/2017/05/samba-rce-exploit.html">漏洞预警 | 潜伏七年的 Samba  远程代码执行漏洞</a></h3>
+
+<h3 id="推荐理由-3">推荐理由：</h3>
+
+<blockquote>
+  <p>Linux版本的永恒之蓝——“SambaCry”？</p>
+</blockquote>
+
+<h3 id="点评-3">点评：</h3>
+
+<blockquote>
+  <p>Samba 是 Linux 和 UNIX 系统的 SMB 协议服务软件，可以实现与其他操作系统（如：微软 Windows 操作系统）进行文件系统、打印机和其他资源的共享。</p>
+</blockquote>
+
+<blockquote>
+  <p>此次在 Samba 中新发现的远程代码执行漏洞（CVE-2017-7494）会影响其自3.5.0以来更新的所有版本。该漏洞极易被利用，某些条件下只需一行代码就可以在受影响的系统上执行恶意代码。</p>
+</blockquote>
+
+<blockquote>
+  <p>目前，Samba 的维护人员已经在 Samba 4.6.4/4.5.10/4.4.14的最新版本中修复了这个问题，用户应尽快升级安装其修补程序。</p>
+</blockquote>
+
+<h3 id="文章链接">文章链接：</h3>
+<ul>
+  <li>http://www.freebuf.com/vuls/135624.html</li>
+  <li>http://thehackernews.com/2017/05/samba-rce-exploit.html</li>
+</ul>
+
+<p><strong>推荐 By Cheese</strong></p>
+
+<h3 id="小心咖啡馆移动安全威胁潜伏在每一个角落"><a href="https://www.helpnetsecurity.com/2017/05/23/mobile-security-threats/">小心咖啡馆：移动安全威胁潜伏在每一个角落</a></h3>
+
+<h3 id="点评-4">点评</h3>
+<blockquote>
+  <p>公共场所的 Wi-Fi 有风险，使用需谨慎</p>
+</blockquote>
+
+<h3 id="推荐理由-4">推荐理由</h3>
+<blockquote>
+  <p>根据 iPass 的一份新报告，40％的组织认为，C级高管（包括首席执行官）在办公室外工作时最有可能被黑客入侵。名单中包括机场（30％），酒店（16％），展览中心（7％）和飞机（4％），而咖啡厅和咖啡店以42%的票数高居第一。</p>
+</blockquote>
+
+<blockquote>
+  <p>咖啡厅和咖啡店无处不在，为移动工人提供便利和舒适，他们涌向这些场所，享受着这里提供的免费的高速互联网。然而，咖啡馆的安全标准总会比较宽松，这意味着任何使用这些网络的人都将面临潜在的威胁。</p>
+</blockquote>
+
+<blockquote>
+  <p>其实不只是高管人员可能在这些地方泄露商业机密，普通人也很容易泄露个人隐私。如果你不能确保所用公共免费网络的安全性，那么建议最好还是少用为妙。</p>
+</blockquote>
+
+<h3 id="参考链接-2">参考链接</h3>
+<ul>
+  <li>https://www.helpnetsecurity.com/2017/05/23/mobile-security-threats/</li>
+</ul>
+
+<p><strong>推荐 By kami</strong></p>
+
+    <footer>
+        
+        <div id="disqus_thread"></div>
+<script>
+    /**
+     * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    var disqus_developer = 1;
+    var disqus_config = function () {
+        this.page.url = 'http://localhost:4000/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/20170528';
+        this.page.identifier = '/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/20170528';
+        this.page.title = "网安一周传说 | 第Ⅻ期";
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        
+    </footer>
+</article>
+
+        </div>
+    </main>
+        <nav class="paginator">
+    <ul>
+        
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/20170520">&lt;&nbsp;Previous</a></li>
+        
+        <li class="sep">&nbsp;</li>
+        <li><a class="fancy-nav" href="#">Top</a></li>
+        <li class="sep">&nbsp;</li>
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/20170604">Next&nbsp;&gt;</a></li>
+        
+        
+    </ul>
+</nav>
+
+    <footer>
+        
+<blockquote id="footer-quote">
+    <p>
+        
+        Some fancy quote
+        
+    </p>
+    <footer>
+        <cite>
+        
+        - John Doe
+        
+    </cite>
+    </footer>
+</blockquote>
+
+<div id="footer-main">
+    <small>
+        &copy; 2016 Name Surname. ALL RIGHTS RESERVED.
+    </small>
+</div>
+
+    </footer>
+</div>
+
+</body>
+</html>

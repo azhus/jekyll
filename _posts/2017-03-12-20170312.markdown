@@ -1,0 +1,90 @@
+---  
+layout: post  
+title: "网安一周传说"
+date: 2017-03-12
+categories: 传媒信安    
+comments: true
+description: 安全事件天天有， 传媒信安周周说。 一朝阅尽天下事， 运筹帷幄隆中坐。
+tags:
+    - 传媒信安   
+---  
+安全事件天天有，
+传媒信安周周说。
+一朝阅尽天下事，
+运筹帷幄隆中坐。
+
+[维基解密之CIA解密](http://thehackernews.com/2017/03/wikileaks-cia-vault7-leak.html)
+
+**推荐理由：**
+堪比斯诺登事件的大新闻，你值得知道。
+**点评：**
+CIA近万个文档泄露，让人们得以知道：Windows、Mac、Linux、iPhone、Android、智能电视，CIA几乎对所有领域伸出了魔爪，做到了无孔不入。CIA近乎极致的攻击手法和工具被曝光，各大厂商该是迎来一场盛大的漏洞修补和升级盛典了。
+                                                                                                      推荐by 黄药师
+
+[50亿条公民信息泄露，京东该不该背锅？](http://www.freebuf.com/news/129076.html)
+
+**推荐理由：**
+身边的安全，值得重视。
+**点评：**
+前几天美国刚曝出一起13.7亿身份信息的泄露事件，我大天朝“不甘落后”出现一起50亿身份信息被窃取的新闻。在各大厂商如此不靠谱的今天，我们只能不断提高自身的安全意识，才能不让我们的隐私被扒个精光。不管是网购、物流，还是上网，也许我们都应该多准备几个马甲了。
+                                                                                                       推荐by 黄药师
+
+[Struts2漏洞又双叒叕来了](http://www.freebuf.com/vuls/128736.html)
+
+**推荐理由：**
+计数君已准备好，出一次漏洞我们记一次。
+**点评：**
+Struts2漏洞每隔一阵儿出现一次，小编们在众多新闻之中每每看到这张熟悉的面孔。对于这种无尽漏洞的框架，也许换一个才是更好的选择？
+                                                                                                        推荐by 黄药师
+
+[科学家在DNA上存储了一个操作系统，一部电影和一个电脑病毒](http://thehackernews.com/2017/03/dna-data-storage.html)
+
+**推荐理由：**
+这是IT界与生物界融合的一次突破性尝试。
+**点评：**
+1克DNA存得下1,000,000,000 T 的数据！也许人工智能、人形电脑并不是未来的唯一发展方向：电脑可以向着拥有人类思维发展，人类何尝不可向着拥有电脑属性进化？也许在未来的某一天，每个人的身体里都可以随意存下一个图书馆的数据，思维速度堪比光脑，种种场景将不止存在于科幻电影之中！
+                                                                                                        推荐by kami
+
+[至少38种智能手机含有预装恶意软件](
+http://securityaffairs.co/wordpress/57050/mobile-2/pre-installed-malware-android.html)
+
+**推荐理由：**
+安卓手机仍然占市场较大的份额，波及甚广，各位可参照列表再看看自己手上的手机。
+**点评：**
+被我们信安小编们吐槽频率最多的除了某度就是安卓啦，现在包括三星、小米、Oppo、Vivo、Nexus、LG、Asus、联想等在内的一些手机型号都纷纷中枪了，充电五分钟通话两小时的广告做的再溜也阻止不了攻击者的脚步，哈哈~这些预装恶意软件可以让攻击者下载、安装、执行安卓恶意App从而控制这些手机设备、获取数据以拨打电话号码。
+躺枪列表：
+Galaxy Note 2
+LG G4
+Galaxy S7
+Galaxy S4
+Galaxy Note 4
+Galaxy Note 5
+Galaxy Note 8
+Xiaomi Mi 4i
+Galaxy A5
+ZTE x500
+Galaxy Note 3
+Galaxy Note Edge
+Galaxy Tab S2
+Galaxy Tab 2
+Oppo N3
+Vivo X6 plus
+Nexus 5
+Nexus 5X
+Asus Zenfone 2
+LenovoS90
+OppoR7 plus
+Xiaomi Redmi
+Lenovo A850
+                                                                                                    推荐by YUE萌主
+
+[雅虎3200万账户被黑客使用“Cookie Forging伪造攻击”](http://thehackernews.com/2017/03/yahoo-cookie-forging-hack.html)；
+[黑客在暗网销售超过100万的Yahoo和Gmail账户](http://thehackernews.com/2017/03/gmail-yahoo-password-hack.html)
+
+Hacker Selling Over 1 Million Decrypted Gmail and Yahoo Passwords On Dark Web
+ 世界上没有绝对的安全，面对层出不穷的数据泄露，唯有自保方为上策。
+点评：
+在过去的两年中，黑客使用一个复杂的“Cookie Forging攻击”获取到大约3200万的用户帐户。根据最新的消息显示，目前已有超过一百万的Yahoo及Gmail账户在暗网市场出售。
+在过去的一年中，有来自各大网站的数十亿账户在互联网上被公开，可以说几乎每一天都有数据泄露的新闻曝出，面对第三方的数据泄露，目前没有公司可以保障我们的账户免受黑客攻击，就连被认为是最安全的电子邮件服务之一的谷歌Gmail也无法幸免~
+虽然事情总是来得有些突然，但忧伤之余，我们也不能坐以待毙啊，小编在此墙裂建议：使用一个优秀的密码管理器，随机生成密码，定期更改密码，未雨绸缪，防患于未然~
+                                                                                                                                  推荐by Cheese

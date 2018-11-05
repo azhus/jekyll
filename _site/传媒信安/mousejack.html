@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        
+        如何通过劫持的无线鼠标或键盘入侵100米内的一台计算机
+        
+    </title>
+    
+    <meta name="description" content="无论你觉得你的计算机的多么的安全，一些恶意的事情还是会发生。因为一台计算机就像是一个拥有合适的工具和功能的开放的书。"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="/resources/css/main.css"/>
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+    
+
+    
+</head>
+<body style="background: url('/resources/images/main_front.jpg') no-repeat fixed;
+                            background-size: cover">
+<div id="wrapper">
+    <header>
+    <nav id="main-nav">
+        <ul>
+            <li><a class="fancy-nav" href="/index.html">home</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/最新公告">最新公告</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/传媒信安">传媒信安</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/课程体系">课程体系</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/example">example</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/信息安全科普">信息安全科普</a></li>
+            
+            <li><a class="fancy-nav" href="/pages/about.html">about</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <main id="start">
+        <div class="articles">
+            <article>
+    <header>
+        
+        <h1>如何通过劫持的无线鼠标或键盘入侵100米内的一台计算机</h1>
+        
+        <div class="post-meta">
+    <small>
+        <time datetime="26 02 2016">
+            26 February, 2016
+        </time>
+        <span class="tag-sep"> | </span>
+        
+        <a class="comment_count" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/mousejack#disqus_thread"
+           data-disqus-identifier="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/mousejack"></a>
+        <span class="tag-sep"> | </span>
+        
+        <nav class="tags">
+    <ul>
+        
+        <li><a href="/tags/传媒信安.html">传媒信安</a><span>&nbsp;&nbsp;</span></li>
+        
+    </ul>
+</nav>
+
+    </small>
+</div>
+
+    </header>
+    <p><img src="http://127.0.0.1:4000//resources/images/V1.png" alt="" /></p>
+
+<p>无论你觉得你的计算机的多么的安全，一些恶意的事情还是会发生。因为一台计算机就像是一个拥有合适的工具和功能的开放的书。</p>
+
+<p>一组安全研究人员通过在没有互联网和蓝牙设备的情况下入侵一台计算机，这同样也证明了（计算机并不是和你想象中的那么安全）。</p>
+
+<p>是的，它有可能是攻击者通过破解蓝牙设备，比如你的无线鼠标和键盘，入侵了你的电脑，并在你的电脑上安装恶意软件或使用rootkit。（rootkit是攻击者用来隐藏自己的踪迹和保留root访问权限的工具）</p>
+
+<p>那些看似无辜的微型适配器插入你的USB端口后，与你的无线鼠标传输数据，但它并不像它伪装的那样无辜。</p>
+
+<p><strong>这的漏洞是什么？</strong></p>
+
+<p>来自安全事务公司——巴士底狱的安全研究人员警告了七个受欢迎的无线键盘和鼠标制造商，包括罗技、戴尔、微软、惠普和联想…</p>
+
+<p>…都容易受到所谓的MouseJack攻击，造成十亿的计算机容易遭受到黑客的攻击。</p>
+
+<p>该缺陷实际驻留在这些无线鼠标与其相应的无线接收器之间的处理加密的方式上。</p>
+
+<p>加密狗和鼠标之间的连接是不可加密的；因此，加密狗会接受任何看似有效的命令。</p>
+
+<p>如何劫持无线鼠标并入侵电脑？</p>
+
+<p>无线鼠标和键盘通过与一个插入PC的USB加密狗进行射频通讯。然后加密狗将数据包发送到PC上，所以它跟随鼠标点击或键盘键入（响应）。</p>
+
+<p>虽然大多数无线键盘厂商加密键盘与加密狗之间的通信，竭尽所能地防止设备的欺骗或劫持。</p>
+
+<p>然而，巴士底狱测试的鼠标并没有加密它们之间通信的加密狗，即允许攻击者欺骗鼠标并在受害人的PC上安装恶意软件。</p>
+
+<p>通过大约$15-$30左右的长距离无线加密狗的使用和几行代码，攻击者就可以允许一个在百米范围内使用计算机的恶意黑客截夺你的计算机和鼠标适配器之间的无线信号。</p>
+
+<p>因此，黑客可以发送产生击键的数据包代替鼠标点击，使得黑客能够在几秒钟内指挥你的计算机访问恶意服务器或网站。</p>
+
+<p>在他们的测试期间，研究人员能够产生超过1000字/分钟的无线连接，且在大约10秒内安装上恶意的Rootkit。他们测试了一些来自罗技、联想、戴尔的鼠标，其中戴尔（鼠标）的操作超过2.4GHz无线通讯。</p>
+
+<p><a href="/storage/app/media/wx/MouseJack.mp4">MouseJack攻击的视频演示</a></p>
+
+<p>谁受到了影响？</p>
+
+<p>以下是因MouseJack漏洞受影响的非蓝牙无线设备的无线键盘和鼠标厂家名单：</p>
+
+<p>·罗技</p>
+
+<p>·戴尔</p>
+
+<p>·惠普</p>
+
+<p>·联想</p>
+
+<p>·微软</p>
+
+<p>·Gigabyte</p>
+
+<p>·AmazonBasics</p>
+
+<p>因为上述任意制造商的无线加密狗，导致数以亿计的PC用户处于MouseJack漏洞风险之中。甚至使用苹果MAC和Linux的用户也有可能遭受攻击。</p>
+
+<p>这些鼠标与从不受此安全问题影响的蓝牙鼠标还有所区别。</p>
+
+<p>许多无线设备将永远收不到任何补丁</p>
+
+<p>研究人员已经给七个厂商报告了该安全问题，但截止到今天为止（该新闻报道的日期为2016年2月23日），只有罗技发布了组织MouseJack攻击的固件更新。</p>
+
+<p>然而，还有为数众多的鼠标没有更新固件，因为这些人将永远保持弱势状态，这可能是在外设经常被使用好几年后才替换的商业环境中的一个重大问题。</p>
+
+<p>虽然联想、惠普、亚马逊和Gigabyte还未就此置评，但是戴尔发言人劝告使用KM714键盘和鼠标套装的用户通过戴尔技术支持获得罗技固件补丁，并且希望使用KM632套装的用户更换他们的设备。</p>
+
+<p>这些是受影响的设备的列表（https://www.bastille.net/affected-devices%20）：</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/V2.png" alt="" /> 
+<img src="http://127.0.0.1:4000//resources/images/V3.png" alt="" /></p>
+
+<p>相应攻击解释：（攻击方法前的#x只是针对不同厂商的标示）</p>
+
+<blockquote>
+  <p>1.Force Pairing 强制配对攻击，可以让未处于配对状态的适配器和对应的键盘、鼠标强行配对成功</p>
+
+  <p>2.Keystroke Injection 击键序列篡改注入，可以让用户的键盘输入序列被篡改。攻击者通过这个攻击可以篡改击键序列，远程控制受害者的计算机</p>
+
+  <p>3.Fake Mouse 用攻击者的无线鼠标强行伪装配对为受害者的无线鼠标，隔空操作受害者的无线键盘</p>
+
+  <p>4.HID Packet Injection  无线鼠标的隔空操作攻击</p>
+
+  <p>5.拒绝服务攻击 强制受害者的鼠标和键盘无法和计算机进行匹配</p>
+</blockquote>
+
+<p>所以如果你使用的是其中的一个，是时候检查更新了，如果不提供（更新），替换现有的外设吧。</p>
+
+<p>想要更深入的了解，您可以参考本白皮书（https://www.mousejack.com/uploads/7/0/7/5/70759437/mj_technical_white_paper.pdf）
+解释技术细节。</p>
+
+    <footer>
+        
+        <div id="disqus_thread"></div>
+<script>
+    /**
+     * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    var disqus_developer = 1;
+    var disqus_config = function () {
+        this.page.url = 'http://localhost:4000/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/mousejack';
+        this.page.identifier = '/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/mousejack';
+        this.page.title = "如何通过劫持的无线鼠标或键盘入侵100米内的一台计算机";
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        
+    </footer>
+</article>
+
+        </div>
+    </main>
+        <nav class="paginator">
+    <ul>
+        
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/windows-exams">&lt;&nbsp;Previous</a></li>
+        
+        <li class="sep">&nbsp;</li>
+        <li><a class="fancy-nav" href="#">Top</a></li>
+        <li class="sep">&nbsp;</li>
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/ramnit">Next&nbsp;&gt;</a></li>
+        
+        
+    </ul>
+</nav>
+
+    <footer>
+        
+<blockquote id="footer-quote">
+    <p>
+        
+        Some fancy quote
+        
+    </p>
+    <footer>
+        <cite>
+        
+        - John Doe
+        
+    </cite>
+    </footer>
+</blockquote>
+
+<div id="footer-main">
+    <small>
+        &copy; 2016 Name Surname. ALL RIGHTS RESERVED.
+    </small>
+</div>
+
+    </footer>
+</div>
+
+</body>
+</html>

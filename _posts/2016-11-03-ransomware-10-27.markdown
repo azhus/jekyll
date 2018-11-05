@@ -1,0 +1,92 @@
+---  
+layout: post  
+title: "勒索么，不要钱的那种"
+date: 2016-11-03
+categories:  信息安全科普  
+comments: true
+description:   今天小编将为大家安利一款信息安全教育套装软件，包含了从基于网页的远程控制工具到勒索软件，全面而实用。
+tags:
+    - 信息安全科普  
+---  
+今天小编将为大家安利一款[信息安全教育套装软件](http://shinosec.com)，包含了从基于网页的远程控制工具到勒索软件，全面而实用。
+
+![](http://127.0.0.1:4000//resources/images/b1.png) 
+
+#### SHinoBOT
+
+ShinoBOT是一款RAT（远程访问木马）模拟器，我们可以通过ShinoC2（C＆C服务器）远程控制被感染的机器，并执行任意的Windows命令，比如：上传、下载文件，截屏等你所需要模拟的所有APT攻击。
+
+#### SHinoEncode
+
+ShinoEncode是在ShinoBOT及其C2通信，以及其他ShinoXXX中出现字符串混淆时为了避免模式匹配检测而使用的一种编码方式。
+
+#### SHinoProxy
+
+ShinoProxy是一个重定向ShinoBOT流量的PHP程序。其目的主要是利用ShinoBOT.com的黑名单来逃避检测。
+
+#### SHinoBuilder
+
+我们可以利用ShinoBuilder自定义ShinoBOT家族的恶意软件模拟器，改变C＆C URL，更改用户代理等，而且每当我们创建一个新的二进制文件时，它会使用ShinoEncode改变二进制的静态字符串。
+
+#### SHinoProxy
+
+我们可以利用ShinoProxy自定义Shino家族的的恶意软件模拟器，改变C＆C URL，更改用户代理等。
+
+#### SHinoCAPTCHA
+
+ShinoCAPTCHA是一个不需要数据库，出站连接，cookie的基于PHP的验证码。
+
+#### SHinoVis
+
+ShinoVis是一个可视化的聚类数据。例如，如果你有一个恶意软件列表和CSV以及与其相关的C＆C列表，你可以复制粘贴到ShinoViS来查看这些数据的关系。
+
+
+
+**最后小编将为大家着重介绍一下ShinoLocker——一款勒索软件模拟器。**
+
+#### SHinoLocker
+
+ShinoLocker是一款勒索软件模拟器。ShinoLocker和实际ramsomware之间的区别是，我们可以免费获取到解密密钥。
+
+提到勒索软件，相信大家一定不会感到陌生了，毕竟传媒信安的小编们也是不止一次的提到过哦~比如在[看剧学安全 | 如何应对《黑客军团2》中的勒索软件攻击](http://sec.cuc.edu.cn/CUCIS/post/mr-robots-2)、[WORD文档藏“炸弹”，点击不慎酿祸患](http://sec.cuc.edu.cn/CUCIS/post/word_locky)中就介绍了有关勒索软件的攻击。
+
+勒索软件通常会将用户系统上文档、邮件、数据库、源代码、图片、压缩文件等多种文件进行某种形式的加密操作，使之不可用，或者通过修改系统配置文件、干扰用户正常使用系统的方法使系统的可用性降低，然后通过弹出窗口、对话框或生成文本文件等的方式向用户发出勒索通知，要求用户向指定帐户汇款来获得解密文件的密码或者获得恢复系统正常运行的方法。
+
+勒索软件是近年数量增加最快的电脑网络威胁之一，黑客通常为隐藏踪迹而要求用户以电子货币方式支付赎金，以换取解密电脑数据所需电子“秘钥”。据估计，黑客借助此类软件每年得手金额合计数亿美元。勒索软件的核心是加密算法、加密密钥（如果是对称加密，还有初始化向量的确定），除非搞定密钥下发服务器或者密钥产生算法，否则只有支付赎金这一条路可以拯救数据。
+
+**本期小编制作了ShinoLocker的使用教程小视频，有兴趣的同学可以参照视频自己动手实践一下哦~**
+
+**安全起见，请不要在真机运行！请一定在虚拟机里运行ShinoLocker体验！**
+
+**安全起见，请不要在真机运行！请一定在虚拟机里运行ShinoLocker体验！**
+
+**安全起见，请不要在真机运行！请一定在虚拟机里运行ShinoLocker体验！**
+
+![](http://127.0.0.1:4000//resources/images/b2.jpg) 
+
+环境配置：Oracle VM virtualBox、Windows7 x86系统镜像。
+
+Tips：解密的时候，由于浏览器兼容性问题，IE8不支持，可以使用chrome浏览器~
+
+[shinolocker视频视频教程](http://v.qq.com/x/page/d0342t8e6ou.html)
+
+**另外，除了GUI程序可以使用，我们还可以通过CLI对文件进行加解密操作。**
+
+首先我们需要下载[ShinoLockerStub.exe](https://github.com/Sh1n0g1/ShinoLocker/tree/master/ShinoLockerStub)。
+
+
+下载完成就可以打开cmd开始使用了~
+
+
+**运行ShinoLockerStub.exe：**
+![](http://127.0.0.1:4000//resources/images/b3.png) 
+
+**文件加密：**
+![](http://127.0.0.1:4000//resources/images/b4.png) 
+
+**文件解密：**
+![](http://127.0.0.1:4000//resources/images/b5.png) 
+
+本期的安利就是这些啦~
+
+下一期小编将继续为大家介绍本系列软件的**ShinoBot套件**，我们可以利用ShinoBOT套件来创建一个用于教育体验目的的远控木马，用来模拟高级持续威胁中的远程控制功能。

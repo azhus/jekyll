@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        
+        网安一周传说 | 第VII期
+        
+    </title>
+    
+    <meta name="description" content="一周要闻概览： 1. 新型钓鱼手段预警：你看到的 apple.com 真是苹果官网？ 2. 网易云音乐客户端远程命令执行(该漏洞已经修复） 3. Karmen勒索软件即服务诞生了，已在美国和德国发现攻击事件 4. HP Vertica企业大数据分析平台爆出远程提权漏洞 5. 为了保护你的设备，一个黑客决定先于其他人黑掉你 6. 25种型号的Linksys路由器易受到安全漏洞的影响"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="/resources/css/main.css"/>
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+    
+
+    
+</head>
+<body style="background: url('/resources/images/main_front.jpg') no-repeat fixed;
+                            background-size: cover">
+<div id="wrapper">
+    <header>
+    <nav id="main-nav">
+        <ul>
+            <li><a class="fancy-nav" href="/index.html">home</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/最新公告">最新公告</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/传媒信安">传媒信安</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/课程体系">课程体系</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/example">example</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/信息安全科普">信息安全科普</a></li>
+            
+            <li><a class="fancy-nav" href="/pages/about.html">about</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <main id="start">
+        <div class="articles">
+            <article>
+    <header>
+        
+        <h1>网安一周传说 | 第VII期</h1>
+        
+        <div class="post-meta">
+    <small>
+        <time datetime="23 04 2017">
+            23 April, 2017
+        </time>
+        <span class="tag-sep"> | </span>
+        
+        <a class="comment_count" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/20170423#disqus_thread"
+           data-disqus-identifier="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/20170423"></a>
+        <span class="tag-sep"> | </span>
+        
+        <nav class="tags">
+    <ul>
+        
+        <li><a href="/tags/传媒信安.html">传媒信安</a><span>&nbsp;&nbsp;</span></li>
+        
+    </ul>
+</nav>
+
+    </small>
+</div>
+
+    </header>
+    <p><strong>安全事件天天有，</strong>
+<strong>传媒信安周周说。</strong>
+<strong>一朝阅尽天下事，</strong>
+<strong>运筹帷幄隆中坐。</strong></p>
+
+<hr />
+
+<h3 id="新型钓鱼手段预警你看到的-аррӏеcom-真是苹果官网"><a href="http://paper.seebug.org/285/">新型钓鱼手段预警：你看到的 аррӏе.com 真是苹果官网？</a></h3>
+
+<h4 id="推荐理由">推荐理由</h4>
+<blockquote>
+  <p>一个新发现的钓鱼网站，在网址中的「аррӏе」和「apple」的五个字母都不一样</p>
+</blockquote>
+
+<blockquote>
+  <p>以字母A为例：</p>
+</blockquote>
+
+<blockquote>
+  <p>前者（钓鱼网站）的「а」Code：0x0430</p>
+</blockquote>
+
+<p><img src="http://127.0.0.1:4000//resources/images/71.jpg" alt="" /></p>
+
+<blockquote>
+  <p>后者（正牌苹果）的「a」Code：0x0061</p>
+</blockquote>
+
+<p><img src="http://127.0.0.1:4000//resources/images/72.jpg" alt="" /></p>
+
+<h4 id="点评">点评</h4>
+<blockquote>
+  <p>非 ASCII 字符出现在 URL 里，会用 Punycode 转码，结果就会出现「xn–」开头的一串字符。中文网址和 emoji 网址也是通过这个办法实现的。</p>
+</blockquote>
+
+<blockquote>
+  <p>域名包含多个不同语言的外文编码，Chrome 和火狐都能防御。不过当整个钓鱼网站域名都是由一种语言的外文编码组成，例如钓鱼网站 apple.com ，是由 Cyrillic 编码 xn–80ak6aa92e.com 所组成，会发生 IDN 欺骗。Chrome 59 已经把这漏洞修复了，火狐仍没修复。</p>
+</blockquote>
+
+<blockquote>
+  <p>这种“新”手段的历史渊源：2011年的旧闻——<a href="http://www.vaikan.com/can-we-believe-our-eyes/">一款恶意软件利用斯拉夫语里的西里尔字母o伪装英文o,实现 hosts 文件伪装劫持域名</a>。</p>
+</blockquote>
+
+<blockquote>
+  <p>更早在2008年，百度空间曾出过利用斯拉夫语伪造 robin 和 yuange 的 ID 进行钓鱼的新闻，由于百度空间下线而无法访问了。</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>一个段子：</strong>把程序员代码中的分号换成希腊语的问号“;”（U+037E），这和英语的分号“;”（U+003B）是不同的，让他怀疑人生。</p>
+</blockquote>
+
+<h4 id="参考链接">参考链接</h4>
+<ul>
+  <li>http://paper.seebug.org/285/</li>
+  <li>http://www.vaikan.com/can-we-believe-our-eyes/</li>
+  <li>https://sec.cuc.edu.cn/huangwei/wiki/teaching_c_ds_2013_day5.html</li>
+</ul>
+
+<p><strong>推荐 By 黄药师</strong></p>
+
+<hr />
+
+<h3 id="网易云音乐客户端远程命令执行该漏洞已经修复"><a href="http://paper.seebug.org/285/">网易云音乐客户端远程命令执行(该漏洞已经修复）</a></h3>
+
+<h4 id="推荐理由-1">推荐理由</h4>
+<blockquote>
+  <p>网易云音乐客户端对 mp3 处理不当,导致攻击者可以构造恶意音乐文件,在用户打开后执行恶意程序。</p>
+</blockquote>
+
+<h4 id="参考链接-1">参考链接</h4>
+<ul>
+  <li>http://paper.seebug.org/285/</li>
+  <li>http://www.tuicool.com/articles/qi2yE3B</li>
+</ul>
+
+<p><strong>推荐 By 黄药师</strong></p>
+
+<hr />
+
+<h3 id="karmen勒索软件即服务诞生了-单价175美金已经售出20份-攻击事件已经在美国和德国发现"><a href="http://toutiao.secjia.com/karmen-ransomware-as-a-service">Karmen勒索软件即服务诞生了 单价175美金已经售出20份 攻击事件已经在美国和德国发现</a></h3>
+
+<h4 id="推荐理由-2">推荐理由</h4>
+<blockquote>
+  <p>勒索软件即服务 RaaS 诞生。没有技术能力的业余黑客也可以购买，使用一整套 web-based 工具来开发自己的勒索攻击。</p>
+</blockquote>
+
+<h4 id="点评-1">点评</h4>
+<blockquote>
+  <p>一次性买断，帮助攻击者收赎金，不抽头。Karmen RaaS 平台是基于 Hidden Tear 勒索软件制作的，而 Github 上还有一个开源的勒索软件项目 YourRansom。勒索软件产业链越来越成熟。</p>
+</blockquote>
+
+<blockquote>
+  <p>安全专家也在不断对抗黑客。安全研究员正致力于 Karmen 的免费解密工具，便于受害者免于伤害。</p>
+</blockquote>
+
+<blockquote>
+  <p>如果遇到此类勒索，专家的建议是：<strong>不要支付赎金。</strong>支付赎金并不能让企业网络免受威胁。五分之一小型和中型业务，在支付赎金后从来没有得到他们的数据。我们应该做的是：<strong>对重要系统例行备份；向安全专家寻求帮助。</strong></p>
+</blockquote>
+
+<h4 id="参考链接-2">参考链接</h4>
+<ul>
+  <li>http://toutiao.secjia.com/karmen-ransomware-as-a-service</li>
+  <li>http://toutiao.secjia.com/ransomware-with-worms-what-will-happen</li>
+</ul>
+
+<p><strong>推荐 By 黄药师</strong></p>
+
+<hr />
+
+<h3 id="hp-vertica企业大数据分析平台爆出远程提权漏洞-41及以后版本受影响-攻击者有可能获得管理员权限"><a href="http://toutiao.secjia.com/hpe-vertica-analytics-platform-cve-2017-5802">HP Vertica企业大数据分析平台爆出远程提权漏洞 4.1及以后版本受影响 攻击者有可能获得管理员权限</a></h3>
+
+<h4 id="推荐理由-3">推荐理由</h4>
+<blockquote>
+  <p>Fortinet 向 HP 提报了一个 hpe vertica 分析平台中的远程提权漏洞 CVE-2017-5802，攻击者可以远程利用此漏洞获得特权访问。HP 已经给出各版本的升级补丁。</p>
+</blockquote>
+
+<h4 id="参考链接-3">参考链接</h4>
+<ul>
+  <li>http://toutiao.secjia.com/hpe-vertica-analytics-platform-cve-2017-5802</li>
+</ul>
+
+<p><strong>推荐 By 黄药师</strong></p>
+
+<hr />
+
+<h3 id="为了保护你的设备一个黑客决定先于其他人黑掉你"><a href="http://thehackernews.com/2017/04/vigilante-hacker-iot-botnet.html">为了保护你的设备，一个黑客决定先于其他人黑掉你</a></h3>
+
+<p><img src="http://127.0.0.1:4000//resources/images/73.png" alt="" /></p>
+
+<h4 id="推荐理由-4">推荐理由</h4>
+<blockquote>
+  <p>有的黑客黑掉你的设备，不是为了破坏，而是为了安全</p>
+</blockquote>
+
+<h4 id="点评-2">点评</h4>
+<blockquote>
+  <p>这是一款名为 “Hajime” 的最新物联网僵尸网络恶意软件，现已感染了至少10000台路由器。其工作机制类似于另一个僵尸网络 Mirai，但与它确实天敌。Mirai 作为不折不扣的恶意软件，感染物联网设备然后发动大规模拒绝服务攻击，臭名昭著。而 Hajime 通过屏蔽路由器的四个容易被攻击的端口（23，754，5358和5555）以便其免受其他恶意攻击。</p>
+</blockquote>
+
+<blockquote>
+  <p>有趣的是，Hajime 会每过十分钟显示一次带有密码签名的信息：“我是白帽子，我来帮你加固安全。”</p>
+</blockquote>
+
+<blockquote>
+  <p>这并非首次出现所谓正义者试图保护脆弱的物联网设备的事件。2014至2015年，曾出现恶意软件 Linux.Wifatch。该软件由“白色团队(The White Team)”所编写，与 Hajime 的目的相似，试图为物联网设备提供安全保护。此外，Brickerbot 也曾以类似方式，通过删除关键系统文件或破坏系统，从而使物联网设备处于离线状态，为设备提供保护。但通常来说，由于白色蠕虫的生命周期较短，防护效果只是暂时性的。</p>
+</blockquote>
+
+<blockquote>
+  <p>首先需要明确的是，无论初衷是什么，私自访问未经授权的系统（即黑客行为）都是非法的。而且我们无法保证Hajime的作者会不会添加新的攻击功能把它用作恶意目的。我们愿意相信白帽子都有一颗自律的心，不过换种方式教大家自己保护自己会不会是个更好的选择？毕竟授人以鱼不如授人以渔，而超人也会有离开或者黑化的可能。</p>
+</blockquote>
+
+<h4 id="参考链接-4">参考链接</h4>
+<p>* http://thehackernews.com/2017/04/vigilante-hacker-iot-botnet.html</p>
+
+<p><strong>推荐 By kami</strong></p>
+
+<hr />
+
+<h3 id="25种型号的-linksys-路由器易受到安全漏洞的影响"><a href="http://thehackernews.com/2017/04/linksys-router-hacking.html">25种型号的 Linksys 路由器易受到安全漏洞的影响</a></h3>
+
+<p><img src="http://127.0.0.1:4000//resources/images/74.png" alt="" /></p>
+
+<h4 id="推荐理由-5">推荐理由：</h4>
+<blockquote>
+  <p>防不胜防，小心路由器泄漏你的敏感数据</p>
+</blockquote>
+
+<h4 id="点评-3">点评：</h4>
+<blockquote>
+  <p>网络安全研究人员披露了 Linksys 路由器中存在的近十几个未修补的安全漏洞，这些漏洞影响了当今广泛使用的25种不同型号的 Linksys Smart Wi-Fi 路由器。</p>
+</blockquote>
+
+<blockquote>
+  <p>据研究人员介绍，漏洞可被用于路由器的拒绝服务攻击，使其无响应或重新启动；可允许攻击者绕过 CGI 脚本来收集敏感数据，如固件版本，正在运行的进程，连接的 USB 设备，防火墙配置等；那些已经设法获得设备认证的攻击者还可以使用 root 权限在设备的操作系统中注入和执行恶意代码。因此，Linksys 建议用户在任何受影响的产品上禁用访客网络功能，修改账户的默认密码，直到有新的固件更新可用于修复这些问题。</p>
+</blockquote>
+
+<blockquote>
+  <p>另外，想要了解受到影响的 Linksys 路由器型号列表，可阅读原文查看哦～</p>
+</blockquote>
+
+<h4 id="参考链接-5">参考链接</h4>
+<p>* http://thehackernews.com/2017/04/linksys-router-hacking.html</p>
+
+<p><strong>推荐 By Cheese</strong></p>
+
+    <footer>
+        
+        <div id="disqus_thread"></div>
+<script>
+    /**
+     * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    var disqus_developer = 1;
+    var disqus_config = function () {
+        this.page.url = 'http://localhost:4000/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/20170423';
+        this.page.identifier = '/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/20170423';
+        this.page.title = "网安一周传说 | 第VII期";
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        
+    </footer>
+</article>
+
+        </div>
+    </main>
+        <nav class="paginator">
+    <ul>
+        
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/20170417">&lt;&nbsp;Previous</a></li>
+        
+        <li class="sep">&nbsp;</li>
+        <li><a class="fancy-nav" href="#">Top</a></li>
+        <li class="sep">&nbsp;</li>
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/20170502">Next&nbsp;&gt;</a></li>
+        
+        
+    </ul>
+</nav>
+
+    <footer>
+        
+<blockquote id="footer-quote">
+    <p>
+        
+        Some fancy quote
+        
+    </p>
+    <footer>
+        <cite>
+        
+        - John Doe
+        
+    </cite>
+    </footer>
+</blockquote>
+
+<div id="footer-main">
+    <small>
+        &copy; 2016 Name Surname. ALL RIGHTS RESERVED.
+    </small>
+</div>
+
+    </footer>
+</div>
+
+</body>
+</html>

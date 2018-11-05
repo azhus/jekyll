@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        
+        OpenSSL漏洞引爆，超1100万HTTPS网站躺枪！
+        
+    </title>
+    
+    <meta name="description" content="继今年1月28日OpenSSL爆出私钥恢复漏洞后，OpenSSL又再次爆出DROWN攻击（淹没攻击）漏洞，这将1100万的HTTPS网站置于险境。小编组即刻展开激烈讨论，看了看国内老百姓普遍访问的网站还有多少没有打补丁。前方高能预警！！！"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="/resources/css/main.css"/>
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+    
+
+    
+</head>
+<body style="background: url('/resources/images/main_front.jpg') no-repeat fixed;
+                            background-size: cover">
+<div id="wrapper">
+    <header>
+    <nav id="main-nav">
+        <ul>
+            <li><a class="fancy-nav" href="/index.html">home</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/最新公告">最新公告</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/传媒信安">传媒信安</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/课程体系">课程体系</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/example">example</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/信息安全科普">信息安全科普</a></li>
+            
+            <li><a class="fancy-nav" href="/pages/about.html">about</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <main id="start">
+        <div class="articles">
+            <article>
+    <header>
+        
+        <h1>OpenSSL漏洞引爆，超1100万HTTPS网站躺枪！</h1>
+        
+        <div class="post-meta">
+    <small>
+        <time datetime="02 03 2016">
+            02 March, 2016
+        </time>
+        <span class="tag-sep"> | </span>
+        
+        <a class="comment_count" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/OpenSSL-DROWN-ATTACK#disqus_thread"
+           data-disqus-identifier="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/OpenSSL-DROWN-ATTACK"></a>
+        <span class="tag-sep"> | </span>
+        
+        <nav class="tags">
+    <ul>
+        
+        <li><a href="/tags/传媒信安.html">传媒信安</a><span>&nbsp;&nbsp;</span></li>
+        
+    </ul>
+</nav>
+
+    </small>
+</div>
+
+    </header>
+    <p><img src="http://127.0.0.1:4000//resources/images/Q7.jpg" alt="" /></p>
+
+<font color="red">继今年1月28日OpenSSL爆出私钥恢复漏洞后，OpenSSL又再次爆出DROWN攻击（淹没攻击）漏洞，这将1100万的HTTPS网站置于险境。小编组即刻展开激烈讨论，看了看国内老百姓普遍访问的网站还有多少没有打补丁。前方高能预警！！！</font>
+
+<p><img src="http://127.0.0.1:4000//resources/images/Q8.jpg" alt="" /></p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/Q9.jpg" alt="" /></p>
+
+<p>经小编亲测，发现淘宝taobao.com没有问题，支付宝alipay.com有一个二级域名有漏洞，360也及时发现该新闻而安然无恙，但是以京东jd.com、腾讯qq.com、百度baidu.com为首的都已经将测试网页染成一片红色。</p>
+
+<font color="red">那么下面小编就为大家介绍介绍这次的漏洞以及如何测试并防范！</font>
+
+<p>首先，这是一种新的致命的OpenSSL安全漏洞，该漏洞会影响HTTPS和依靠SSL和TLS等服务，也就是一些互联网安全的必要加密协议。这些协议允许每个人在互联网上浏览网页，使用电子邮件，网上购物时没有第三方能够读取通信发送即时消息。</p>
+
+<p>之所以被称为<strong>淹没</strong>，是因为今日披露的OpenSSL中的安全漏洞可以允许攻击者低成本的破解加密和读取或窃取敏感的通信，包括密码，信用卡号码，商业秘密或财务数据。根据漏洞发现者测量的结果表明33％的HTTPS被测试站点存在该漏洞，很容易受到攻击。</p>
+
+<h2 id="攻击者可以获得什么">攻击者可以获得什么？</h2>
+<p>用户和服务器之间的任何通信。这通常包括，但不限于，用户名和密码，信用卡号，电子邮件，即时消息，以及敏感文件。在一些常见的场景，攻击者还可以冒充一个安全的网站和拦截或更改用户看到的内容。</p>
+
+<h2 id="我们的网站这么脆弱">我们的网站这么脆弱？</h2>
+<p>现在流行的服务器和客户端使用TLS加密，然而，由于错误配置，许多服务器仍然支持SSLv2，这是一种古老的协议，实践中许多客户端已经不支持使用SSLv2。</p>
+
+<p>DROWN攻击威胁到还在支持SSLv2的服务端和客户端，他允许攻击者通过发送probe到支持SSLv2的使用相同密钥的服务端和客户端解密TLS通信。</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/Q10.jpg" alt="" /></p>
+
+<p>允许SSLv2连接，比想象中的要常见，由于错误配置和不当的默认配置，我们调查17%的HTTPS服务器一直支持SSLv2连接</p>
+
+<p>私钥被使用于其他支持SSLv2连接的服务，许多公司不允许使用相同的证书和私钥在他的web和email服务，例如，下面这个案例,如果email服务支持SSLv2，但是web服务不支持，攻击者能够利用email服务的SSLv2漏洞切断到web服务器的TLS的连接。</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/Q11.png" alt="" /></p>
+
+<h2 id="如何测试该漏洞">如何测试该漏洞？</h2>
+<font color="red">可以通过https://test.drownattack.com/?site=你的站点来查看是否受影响</font>
+
+<p><img src="http://127.0.0.1:4000//resources/images/Q12.png" alt="" /></p>
+
+<h2 id="怎么保护我自己">怎么保护我自己？</h2>
+<h5 id="作为服务器管理员">作为服务器管理员：</h5>
+<p>确保你的私钥不适用于其他的支持SSLv2服务，包括web，smtp，imap，pop服务等。禁止服务器端的SSLv2支持。如果是OpenSSL，可以参考安装最新的补丁和操作辅导。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://www.openssl.org/blog/blog/2016/03/01/an-openssl-users-guide-to-drown/
+</code></pre></div></div>
+
+<p>Microsoft IIS (Windows Server)：IIS 7和以上的版本默认已经禁止了SSLv2。</p>
+
+<p>详细的漏洞描述原理报告：https://drownattack.com/</p>
+
+<h5 id="作为广大的草根用户">作为广大的草根用户：</h5>
+<p>我们能做的只有​暂停对这些存在漏洞的服务网站的访问，直到厂商修复了这些漏洞，坐等我们的更新通知~</p>
+
+<p>小编发完这篇，也要收起手机、收起电脑，去学习啦，做一个安静的学霸程序媛，各位看完点赞转发后，也赶紧洗洗睡吧！</p>
+
+<h6 id="参考文献">参考文献：</h6>
+<p>The Hacker News：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://thehackernews.com/2016/03/drown-attack-openssl-vulnerability.html
+</code></pre></div></div>
+
+<p>DROWN ATTACK 官网：https://drownattack.com/</p>
+
+    <footer>
+        
+        <div id="disqus_thread"></div>
+<script>
+    /**
+     * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    var disqus_developer = 1;
+    var disqus_config = function () {
+        this.page.url = 'http://localhost:4000/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/OpenSSL-DROWN-ATTACK';
+        this.page.identifier = '/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/OpenSSL-DROWN-ATTACK';
+        this.page.title = "OpenSSL漏洞引爆，超1100万HTTPS网站躺枪！";
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        
+    </footer>
+</article>
+
+        </div>
+    </main>
+        <nav class="paginator">
+    <ul>
+        
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/integrity-check">&lt;&nbsp;Previous</a></li>
+        
+        <li class="sep">&nbsp;</li>
+        <li><a class="fancy-nav" href="#">Top</a></li>
+        <li class="sep">&nbsp;</li>
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/turing-award-cryptography">Next&nbsp;&gt;</a></li>
+        
+        
+    </ul>
+</nav>
+
+    <footer>
+        
+<blockquote id="footer-quote">
+    <p>
+        
+        Some fancy quote
+        
+    </p>
+    <footer>
+        <cite>
+        
+        - John Doe
+        
+    </cite>
+    </footer>
+</blockquote>
+
+<div id="footer-main">
+    <small>
+        &copy; 2016 Name Surname. ALL RIGHTS RESERVED.
+    </small>
+</div>
+
+    </footer>
+</div>
+
+</body>
+</html>

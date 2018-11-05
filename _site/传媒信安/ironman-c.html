@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        
+        看剧学安全——扒一扒《钢铁侠》中出现的C语言程序代码
+        
+    </title>
+    
+    <meta name="description" content="看剧学安全——扒一扒《钢铁侠》中出现的C语言程序代码”"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="/resources/css/main.css"/>
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+    
+
+    
+</head>
+<body style="background: url('/resources/images/main_front.jpg') no-repeat fixed;
+                            background-size: cover">
+<div id="wrapper">
+    <header>
+    <nav id="main-nav">
+        <ul>
+            <li><a class="fancy-nav" href="/index.html">home</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/最新公告">最新公告</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/传媒信安">传媒信安</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/课程体系">课程体系</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/example">example</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/信息安全科普">信息安全科普</a></li>
+            
+            <li><a class="fancy-nav" href="/pages/about.html">about</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <main id="start">
+        <div class="articles">
+            <article>
+    <header>
+        
+        <h1>看剧学安全——扒一扒《钢铁侠》中出现的C语言程序代码</h1>
+        
+        <div class="post-meta">
+    <small>
+        <time datetime="08 04 2016">
+            08 April, 2016
+        </time>
+        <span class="tag-sep"> | </span>
+        
+        <a class="comment_count" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/ironman-c#disqus_thread"
+           data-disqus-identifier="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/ironman-c"></a>
+        <span class="tag-sep"> | </span>
+        
+        <nav class="tags">
+    <ul>
+        
+        <li><a href="/tags/传媒信安.html">传媒信安</a><span>&nbsp;&nbsp;</span></li>
+        
+    </ul>
+</nav>
+
+    </small>
+</div>
+
+    </header>
+    <p><img src="http://127.0.0.1:4000//resources/images/ww1.jpg" alt="" /></p>
+
+<p>天了噜~你是《钢铁侠》系列电影的忠实影迷吗？那你听说钢铁侠和乐高积木有让人意想不到的关系吗？</p>
+
+<p>在第一部的《钢铁侠》里，工业家及发明家托尼·斯塔克遭阴谋绑架，被迫制造最致命的武器，身受重伤的他却暗中制造了一套高科技盔甲，保护自己逃生，从此变身“钢铁侠”保卫地球。而其中钢铁侠第一次启动其人工心脏时，笔记本电脑屏幕上就出现了这样的一段代码……</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/ww2.jpg" alt="" /></p>
+
+<p>秉承着程序猿与生俱来的莫名的好奇心与检索能力，放大仔细一看，然后再根据关键字一查，很容易找到这段代码的完整版是这样的……</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>send[0] = 0x65;
+    send[1] = 1;
+    send[2] = 3;
+    send[3] = 5;
+    send[4] = 7;
+    send[5] = 11;
+
+    if (rcx_sendrecv(fd, send, 6, recv, 1, 50, RETRIES, use_comp) != 1) {
+	fprintf(stderr, "%s: delete firmware failed\n", progname);
+	exit(1);
+    }
+
+    /* Start firmware download */
+    send[0] = 0x75;
+    send[1] = (start &gt;&gt; 0) &amp; 0xff;
+    send[2] = (start &gt;&gt; 8) &amp; 0xff;
+    send[3] = (cksum &gt;&gt; 0) &amp; 0xff;
+    send[4] = (cksum &gt;&gt; 8) &amp; 0xff;
+    send[5] = 0;
+
+    if (rcx_sendrecv(fd, send, 6, recv, 2, 50, RETRIES, use_comp) != 2) {
+	fprintf(stderr, "%s: start firmware download failed\n", progname);
+	exit(1);
+    }
+
+    /* Transfer data */
+    addr = 0;
+    index = 1;
+    for (addr = 0, index = 1; addr &lt; len; addr += size, index++) {
+</code></pre></div></div>
+
+<p>瞬间是不是觉得很熟悉？瞧瞧这工整的数组结构，还有那标志性的fprintf和那如亲人般熟悉的for循环语句，这不就是我们程序员入学时必学的，用来写出人生第一个“HELLO WORLD”的C语言嘛~~</p>
+
+<p>对，是它，是它，就是它！多少美少女美少年就是因为当年那个看起来很神奇的“HELLO WORLD”，幻想着自己能够变身编程界的“钢铁侠”而华丽丽的掉入坑里！</p>
+
+<p>这段代码其实是来自一个乐高积木(LEGO，一种可编程的积木游戏)的固件下载程序，由斯坦福大学的Kekoa Proudfoot写于1998年。它使用的是Mozilla Public License许可协议，这跟火狐浏览器和其他很多开源软件使用的许可协议一样。完整版代码可以查看：<a href="http://www.mralligator.com/rcx/firmdl3.c">源代码</a></p>
+
+<p>电影中使用这段代码，似乎是在暗示要给钢铁侠下载一套固件程序，或者是把固件程序上传到乐高积木控制系统里，这么看来，钢铁侠的诞生跟乐高积木还真是有着剪不断理还乱的关联呢！</p>
+
+<p>你以为这就完了？</p>
+
+<p>既然我们能够通过一个程序片段就能找到对应的准确代码，那我要是得到了一段完整的屏幕截图呢？入侵电脑不就是分分钟的事了？？这不，小伙伴昨天刚刚献上了膝盖躺枪_(:з」∠)_</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/ww3.png" alt="" /></p>
+
+<p>可怕的人类，吓得宝宝赶紧抱紧自己的主机……</p>
+
+<p>通过这件事就是想告诉大家：</p>
+
+<p>1.不要惹学信息安全的娃（开个玩笑哈~O(∩_∩)O）</p>
+
+<p>2.要养成人走锁屏的好习惯</p>
+
+<p>“安全无小事，好习惯都是逼出来的”！</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/ww4.jpg" alt="" /></p>
+
+<p>参考资料：</p>
+
+<p>1.<a href="http://zhuanlan.zhihu.com/p/20059191">千万别惹程序员</a>
+​</p>
+
+    <footer>
+        
+        <div id="disqus_thread"></div>
+<script>
+    /**
+     * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    var disqus_developer = 1;
+    var disqus_config = function () {
+        this.page.url = 'http://localhost:4000/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/ironman-c';
+        this.page.identifier = '/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/ironman-c';
+        this.page.title = "看剧学安全——扒一扒《钢铁侠》中出现的C语言程序代码";
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        
+    </footer>
+</article>
+
+        </div>
+    </main>
+        <nav class="paginator">
+    <ul>
+        
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/adobe-flash-player">&lt;&nbsp;Previous</a></li>
+        
+        <li class="sep">&nbsp;</li>
+        <li><a class="fancy-nav" href="#">Top</a></li>
+        <li class="sep">&nbsp;</li>
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/dridex_virus">Next&nbsp;&gt;</a></li>
+        
+        
+    </ul>
+</nav>
+
+    <footer>
+        
+<blockquote id="footer-quote">
+    <p>
+        
+        Some fancy quote
+        
+    </p>
+    <footer>
+        <cite>
+        
+        - John Doe
+        
+    </cite>
+    </footer>
+</blockquote>
+
+<div id="footer-main">
+    <small>
+        &copy; 2016 Name Surname. ALL RIGHTS RESERVED.
+    </small>
+</div>
+
+    </footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        
+        TK教主倾情演绎高危漏洞：咱们谁都没有错，就是不该在一起
+        
+    </title>
+    
+    <meta name="description" content="TK教主亲情演绎：咱们谁都没有错，就是不该在一起！！Windows历史上影响最广泛的漏洞，从Win95到Win10都受影响！！"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="/resources/css/main.css"/>
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+    
+
+    
+</head>
+<body style="background: url('/resources/images/main_front.jpg') no-repeat fixed;
+                            background-size: cover">
+<div id="wrapper">
+    <header>
+    <nav id="main-nav">
+        <ul>
+            <li><a class="fancy-nav" href="/index.html">home</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/最新公告">最新公告</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/传媒信安">传媒信安</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/课程体系">课程体系</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/example">example</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/信息安全科普">信息安全科普</a></li>
+            
+            <li><a class="fancy-nav" href="/pages/about.html">about</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <main id="start">
+        <div class="articles">
+            <article>
+    <header>
+        
+        <h1>TK教主倾情演绎高危漏洞：咱们谁都没有错，就是不该在一起</h1>
+        
+        <div class="post-meta">
+    <small>
+        <time datetime="21 06 2016">
+            21 June, 2016
+        </time>
+        <span class="tag-sep"> | </span>
+        
+        <a class="comment_count" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/BadTunnel#disqus_thread"
+           data-disqus-identifier="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/BadTunnel"></a>
+        <span class="tag-sep"> | </span>
+        
+        <nav class="tags">
+    <ul>
+        
+        <li><a href="/tags/传媒信安.html">传媒信安</a><span>&nbsp;&nbsp;</span></li>
+        
+    </ul>
+</nav>
+
+    </small>
+</div>
+
+    </header>
+    <p>啦啦啦～～好久不见，小编既请了一个星期假又加了一个星期班后终于回归啦！！！！</p>
+
+<p>满血复活！！！大家有没有想小编呢？？？嘻嘻~~~</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/t1.jpg" alt="" /></p>
+
+<p>小编放假加班不更新可不代表安全圈里平平安安啊～～～这不微软6月15号就发布了一个高危漏洞补丁！！！</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/t2.jpeg" alt="" /></p>
+
+<p>该漏洞由腾讯玄武实验室创建者于旸（安全圈称TK教主！段子手！！妇科圣手！！！）发现，</p>
+
+<p>（咳咳，小剧场，头衔太多的苦恼，TK教主吐槽妇科圣手！！！）</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/t3.png" alt="" /></p>
+
+<p>（咳咳，小剧场收！！！）</p>
+
+<p>教主将其命名为“BadTunnel”，号称是Windows历史上影响最广泛的漏洞，从Win95到Win10都受影响。尤其对于微软已不支持的版本（如Win XP），其用户将面临被秘密监控的危险。</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/t3.jpg" alt="" /></p>
+
+<p>于旸称，该漏洞为原始设计问题。当用户打开一个 URL，或者打开任意一种 Office文件、PDF文件或者某些其他格式的文件，或者插上一个 U 盘－－甚至不需要用户打开 U盘里的任何东西，攻击者都可以完成利用，其成功率极高。最终的结果是，攻击者可以劫持整个目标网络，获取权限提升。</p>
+
+<p>“即使安全软件开启了主动防御机制，仍然无法检测到攻击。攻击者还可以利用该漏洞在目标系统中执行恶意代码。”</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/t4.jpg" alt="" /></p>
+
+<p>吓尿了有没有！！！该漏洞主要是一系列各自单独设计的协议和特性协同工作导致的。一个成功的漏洞利用需要伪造NetBIOS（最初由IBM开发）连接，使不同设备上的软件通过局域网进行通信。即使攻击者不在目标网络中，仍然可以绕过防火墙和NAT设备，通过猜出正确的网络设备标识符（也就是事务ID），在网络中建立可信的交互，将网络流量全部重定向到攻击者的计算机。</p>
+
+<p>攻击者可将计算机伪装成网络设备，例如本地打印机服务器或文件服务器。他们不仅可以监听未加密流量，也可以拦截和篡改Windows更新下载。神出鬼没，防不胜防也就是这样了吧！！！</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/t5.jpg" alt="" /></p>
+
+<p>漏洞的攻击原理说来简单，就是“咱们谁都没有错，就是不该在一起”</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/t6.jpg" alt="" /></p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/t7.jpg" alt="" /></p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/t8.jpg" alt="" /></p>
+
+<p>咳咳，你没有听错这不是一个言情段子，这是安全圈第一段子手发现的漏洞~~~~</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/t9.jpg" alt="" /></p>
+
+<p>一系列各自单独设计的协议和特性，单独来看，几乎都没问题，甚至是必需的。但是，这些单独特性的协同工作却带来了一个巨大的安全问题。</p>
+
+<p>教主只是把几个看似无关的鸡肋漏洞甚至不是漏洞的正常特性组合在一起，就搞出来了个大杀器、大新闻！！！</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/t10.jpg" alt="" /></p>
+
+<p>这可能是年度最能说明：为什么搞信息安全的人需要开脑洞、脑洞最好能大到天际的理由了。。。</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/t11.jpg" alt="" /></p>
+
+<p>另外，小编在这里不得不提一下一个和教主伟业擦肩而过的男人–wuli桃花岛主黄上</p>
+
+<p>黄上在今年3月也研究过WPAD劫持。。。。</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/t12.jpg" alt="" /></p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/t13.jpg" alt="" /></p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/t14.jpg" alt="" /></p>
+
+<p>然而。。。</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/t15.jpg" alt="" /></p>
+
+<p>唉。。。不得不说毕竟牛人，擦边球什么的小编还是连边都碰不上。。。</p>
+
+<p><strong>对于这种天坑级别的漏洞，小白用户应该怎么做呢？？？</strong></p>
+
+<p><strong>一句话！！！赶紧升级！！！微软都站出来补坑了！！！我们动一动手指就好了！！！</strong></p>
+
+<p><strong>但是对于那些微软已不支持的Windows版本，如XP等等，我们应该怎么办呢？？？？</strong></p>
+
+<p><strong>专家建议禁用NetBIOSover TCP/IP，微软官方已给出操作步骤。或者阻断NetBIOS 137端口的出站连接也可以起到类似的效果。</strong></p>
+
+<p><strong>另外教主也表示将在8月举行的拉斯维加斯黑客大会上公布该漏洞细节。</strong></p>
+
+<p><strong>我等一干教众只能翘首以待啦！！！！教主威武！！！！</strong></p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/t16.jpg" alt="" /></p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/t17.jpg" alt="" /></p>
+
+<p>参考文献：</p>
+
+<p>Freebuf：<a href="http://www.freebuf.com/vuls/106877.html">BadTunnel：影响Win95到Win10的“超级漏洞”（CVE-2016-3213）</a></p>
+
+<p>乌云：<a href="http://drops.wooyun.org/papers/16925">BadTunnel：跨网段劫持广播协议</a></p>
+
+    <footer>
+        
+        <div id="disqus_thread"></div>
+<script>
+    /**
+     * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    var disqus_developer = 1;
+    var disqus_config = function () {
+        this.page.url = 'http://localhost:4000/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/BadTunnel';
+        this.page.identifier = '/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/BadTunnel';
+        this.page.title = "TK教主倾情演绎高危漏洞：咱们谁都没有错，就是不该在一起";
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        
+    </footer>
+</article>
+
+        </div>
+    </main>
+        <nav class="paginator">
+    <ul>
+        
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/The-Power-of-Privacy">&lt;&nbsp;Previous</a></li>
+        
+        <li class="sep">&nbsp;</li>
+        <li><a class="fancy-nav" href="#">Top</a></li>
+        <li class="sep">&nbsp;</li>
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/two-factor-authentication-hack">Next&nbsp;&gt;</a></li>
+        
+        
+    </ul>
+</nav>
+
+    <footer>
+        
+<blockquote id="footer-quote">
+    <p>
+        
+        Some fancy quote
+        
+    </p>
+    <footer>
+        <cite>
+        
+        - John Doe
+        
+    </cite>
+    </footer>
+</blockquote>
+
+<div id="footer-main">
+    <small>
+        &copy; 2016 Name Surname. ALL RIGHTS RESERVED.
+    </small>
+</div>
+
+    </footer>
+</div>
+
+</body>
+</html>

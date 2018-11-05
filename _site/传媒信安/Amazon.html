@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        
+        号外号外~亚马逊在售商品已感染恶意软件！
+        
+    </title>
+    
+    <meta name="description" content="4月10日，安全研究专家Mark Olsen称，亚马逊商城出售的产品中存在恶意软件！！！"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="/resources/css/main.css"/>
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+    
+
+    
+</head>
+<body style="background: url('/resources/images/main_front.jpg') no-repeat fixed;
+                            background-size: cover">
+<div id="wrapper">
+    <header>
+    <nav id="main-nav">
+        <ul>
+            <li><a class="fancy-nav" href="/index.html">home</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/最新公告">最新公告</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/传媒信安">传媒信安</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/课程体系">课程体系</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/example">example</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/信息安全科普">信息安全科普</a></li>
+            
+            <li><a class="fancy-nav" href="/pages/about.html">about</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <main id="start">
+        <div class="articles">
+            <article>
+    <header>
+        
+        <h1>号外号外~亚马逊在售商品已感染恶意软件！</h1>
+        
+        <div class="post-meta">
+    <small>
+        <time datetime="12 04 2016">
+            12 April, 2016
+        </time>
+        <span class="tag-sep"> | </span>
+        
+        <a class="comment_count" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/Amazon#disqus_thread"
+           data-disqus-identifier="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/Amazon"></a>
+        <span class="tag-sep"> | </span>
+        
+        <nav class="tags">
+    <ul>
+        
+        <li><a href="/tags/传媒信安.html">传媒信安</a><span>&nbsp;&nbsp;</span></li>
+        
+    </ul>
+</nav>
+
+    </small>
+</div>
+
+    </header>
+    <p>4月10日，安全研究专家Mark Olsen称，亚马逊商城出售的产品中存在恶意软件！！！</p>
+
+<p>事情是这样的：Olsen在亚马逊商城帮他的朋友购买户外监控摄像头时，发现了一件非常有趣的事情！！！一组配套销售的六台PoE摄像头和一台记录设备。</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/uu1.png" alt="" /></p>
+
+<p>然后，他购买了这一套户外监控设备，并尝试在他朋友的计算机中安装摄像头配套的控制软件。当他登录到设备的网页管理页面查看设备配置接口时，发现其并没有提供常见的控制选项和配置信息。</p>
+
+<p>Olsen怀疑，可能是由于程序代码中的错误导致了这种奇怪的现象，所以他决定仔细的查看一下软件的源码！！！（还得说有能力的人真是不一般！！！小编一般遇到这种情况可能直接就联系客服退货了！！！）</p>
+
+<p>呵呵！！然后问题就来了！！黑客撞上了安全！！赶巧了！！</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/uu2.jpg" alt="" /></p>
+
+<p>Olsen在检查摄像头管理界面源码时，注意到一个iframe链接到了一个可疑的主机名。这可能就是导致管理页面无法正常配置的原因。</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/uu3.png" alt="" /></p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/uu4.png" alt="" /></p>
+
+<p>由上图我们可以看到可以主机名为brenz.pl，那么brenz.pl到底是什么呢？我们通过直接Google brenz.pl来找到答案。</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/uu5.png" alt="" /></p>
+
+<p>从搜索结果中可以看到其经常和Mailicious、hijacking、blocked、malware这些关键词一起出现。。。可想而知brenz.pl应该不是什么好东西。打开这些查询到的信息还可以看到brenz.pl是一个知名的恶意域名，用于各种欺骗活动和恶意软件攻击。（如果你想问为什么小编可以随意google呢？？？那么小编只能告诉你要动脑子啊！！！没有什么是不可以的！！！咦咦咦~~~好像哪里听起来不太对！！！）</p>
+
+<p>这里小编还要安利大家一个免费提供可疑文件分析服务的网站：VirusTotal ！！！！</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/uu6.png" alt="" /></p>
+
+<p>VirusTotal可以说是一块面向大众的照妖镜，无论你是专业的安全研究人员还是什么都不懂的小白，你可以将你怀疑、不懂、未知属性的一切文件、URL、hash值、域名、IP地址交给VirusTotal，only search it！你会发现很多年意想不到的惊喜or惊吓！！！哈哈！！</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/uu7.png" alt="" /></p>
+
+<p>比如说你把brenz.pl扔进去，就会看到全球68家检测系统中15家认为brenz.pl为恶意网站，提供恶意服务！！！不要觉得15家很少哦！！要知道没有一家安全检测机构会无缘无故的抹黑一个提供正常服务的网站哦！！</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/uu8.png" alt="" /></p>
+
+<p>哦哦哦！！！扯远了！！！毕竟VirusTotal也没有给小编代言费，吹捧！咳咳咳！不是！推荐！就到这里了。继续亚马逊出售的产品中存在恶意软件事件！！</p>
+
+<p>用户一旦安装了这些设备的固件，那么在他们访问设备管理页面时，就会在用户毫无察觉的情况下访问brenz.pl站点，而brenz.pl站点上无疑有n多的恶意程序。比如说Olsen在摄像头管理软件发现的brenz.pl站点可能就会定向的提供摄像头后门程序，攻击者可能比拥有摄像头的用户拥有更高的控制权限呢！！！然后你想用摄像头监控的所有，就都能被攻击者监控，篡改了！！！！哇哇哇！！好可怕！！</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/uu9.jpg" alt="" /></p>
+
+<p>你可能会说只需随便用Google一下就可以发现的恶意域名和软件为什么没有被大多数用户发现呢？可能是因为我们在买东西的时候关注的永远都是卖家的好评高不高，产品卖的好不好，虽然这也没错，但小编不得不提醒您购买电子产品时，一定要多几个心眼，一旦你被黑客盯上了呢！！！</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/uu10.gif" alt="" /></p>
+
+<p>小编就曾经看到过这样一个案例，黑客盯上了公司的某个高管，发现其最近在淘宝（或其他网上购物平台，举例哈！！不针对！！嘿嘿，小编是深爱淘宝的！！）购买了一个U盘，就费劲心思的在快递运送的过程中替换了正常的U盘，这样一个植入了恶意程序的U盘就不受任何怀疑的交到了目标用户的手上，当目标用户使用该U盘接触任何电脑时。。。可想而知，这些电脑也就理所当然的沦陷了！！！！</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/uu11.jpg" alt="" /></p>
+
+<p>客官啊！你的快递到了！请“注意”查收！！！</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/uu12.jpg" alt="" /></p>
+
+    <footer>
+        
+        <div id="disqus_thread"></div>
+<script>
+    /**
+     * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    var disqus_developer = 1;
+    var disqus_config = function () {
+        this.page.url = 'http://localhost:4000/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/Amazon';
+        this.page.identifier = '/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/Amazon';
+        this.page.title = "号外号外~亚马逊在售商品已感染恶意软件！";
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        
+    </footer>
+</article>
+
+        </div>
+    </main>
+        <nav class="paginator">
+    <ul>
+        
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/dridex_virus">&lt;&nbsp;Previous</a></li>
+        
+        <li class="sep">&nbsp;</li>
+        <li><a class="fancy-nav" href="#">Top</a></li>
+        <li class="sep">&nbsp;</li>
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/infor-sec">Next&nbsp;&gt;</a></li>
+        
+        
+    </ul>
+</nav>
+
+    <footer>
+        
+<blockquote id="footer-quote">
+    <p>
+        
+        Some fancy quote
+        
+    </p>
+    <footer>
+        <cite>
+        
+        - John Doe
+        
+    </cite>
+    </footer>
+</blockquote>
+
+<div id="footer-main">
+    <small>
+        &copy; 2016 Name Surname. ALL RIGHTS RESERVED.
+    </small>
+</div>
+
+    </footer>
+</div>
+
+</body>
+</html>

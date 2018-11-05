@@ -1,0 +1,88 @@
+---  
+layout: post  
+title: "看剧学安全——扒一扒《钢铁侠》中出现的C语言程序代码"
+date: 2016-04-08
+categories:  传媒信安     
+comments: true
+description: 看剧学安全——扒一扒《钢铁侠》中出现的C语言程序代码”
+tags:
+    - 传媒信安
+---  
+
+![](http://127.0.0.1:4000//resources/images/ww1.jpg) 
+
+天了噜~你是《钢铁侠》系列电影的忠实影迷吗？那你听说钢铁侠和乐高积木有让人意想不到的关系吗？
+
+在第一部的《钢铁侠》里，工业家及发明家托尼·斯塔克遭阴谋绑架，被迫制造最致命的武器，身受重伤的他却暗中制造了一套高科技盔甲，保护自己逃生，从此变身“钢铁侠”保卫地球。而其中钢铁侠第一次启动其人工心脏时，笔记本电脑屏幕上就出现了这样的一段代码……
+
+![](http://127.0.0.1:4000//resources/images/ww2.jpg) 
+
+秉承着程序猿与生俱来的莫名的好奇心与检索能力，放大仔细一看，然后再根据关键字一查，很容易找到这段代码的完整版是这样的……
+
+
+
+```
+send[0] = 0x65;
+    send[1] = 1;
+    send[2] = 3;
+    send[3] = 5;
+    send[4] = 7;
+    send[5] = 11;
+
+    if (rcx_sendrecv(fd, send, 6, recv, 1, 50, RETRIES, use_comp) != 1) {
+	fprintf(stderr, "%s: delete firmware failed\n", progname);
+	exit(1);
+    }
+
+    /* Start firmware download */
+    send[0] = 0x75;
+    send[1] = (start >> 0) & 0xff;
+    send[2] = (start >> 8) & 0xff;
+    send[3] = (cksum >> 0) & 0xff;
+    send[4] = (cksum >> 8) & 0xff;
+    send[5] = 0;
+
+    if (rcx_sendrecv(fd, send, 6, recv, 2, 50, RETRIES, use_comp) != 2) {
+	fprintf(stderr, "%s: start firmware download failed\n", progname);
+	exit(1);
+    }
+
+    /* Transfer data */
+    addr = 0;
+    index = 1;
+    for (addr = 0, index = 1; addr < len; addr += size, index++) {
+```
+
+
+瞬间是不是觉得很熟悉？瞧瞧这工整的数组结构，还有那标志性的fprintf和那如亲人般熟悉的for循环语句，这不就是我们程序员入学时必学的，用来写出人生第一个“HELLO WORLD”的C语言嘛~~
+
+
+对，是它，是它，就是它！多少美少女美少年就是因为当年那个看起来很神奇的“HELLO WORLD”，幻想着自己能够变身编程界的“钢铁侠”而华丽丽的掉入坑里！
+
+
+这段代码其实是来自一个乐高积木(LEGO，一种可编程的积木游戏)的固件下载程序，由斯坦福大学的Kekoa Proudfoot写于1998年。它使用的是Mozilla Public License许可协议，这跟火狐浏览器和其他很多开源软件使用的许可协议一样。完整版代码可以查看：[源代码](http://www.mralligator.com/rcx/firmdl3.c)
+
+电影中使用这段代码，似乎是在暗示要给钢铁侠下载一套固件程序，或者是把固件程序上传到乐高积木控制系统里，这么看来，钢铁侠的诞生跟乐高积木还真是有着剪不断理还乱的关联呢！
+
+你以为这就完了？
+
+既然我们能够通过一个程序片段就能找到对应的准确代码，那我要是得到了一段完整的屏幕截图呢？入侵电脑不就是分分钟的事了？？这不，小伙伴昨天刚刚献上了膝盖躺枪_(:з」∠)_
+
+![](http://127.0.0.1:4000//resources/images/ww3.png) 
+
+可怕的人类，吓得宝宝赶紧抱紧自己的主机……
+
+通过这件事就是想告诉大家：
+
+1.不要惹学信息安全的娃（开个玩笑哈~O(∩_∩)O）
+
+2.要养成人走锁屏的好习惯
+
+“安全无小事，好习惯都是逼出来的”！
+
+![](http://127.0.0.1:4000//resources/images/ww4.jpg) 
+
+参考资料：
+
+1.[千万别惹程序员](http://zhuanlan.zhihu.com/p/20059191)
+​

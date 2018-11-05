@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        
+        如何用黑客技术打开一扇门？
+        
+    </title>
+    
+    <meta name="description" content="你离信息安全其实也只有一扇门的距离，也许关注我们你就能打开这扇门，从另一个角度看看这个世界！！"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="/resources/css/main.css"/>
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+    
+
+    
+</head>
+<body style="background: url('/resources/images/main_front.jpg') no-repeat fixed;
+                            background-size: cover">
+<div id="wrapper">
+    <header>
+    <nav id="main-nav">
+        <ul>
+            <li><a class="fancy-nav" href="/index.html">home</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/最新公告">最新公告</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/传媒信安">传媒信安</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/课程体系">课程体系</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/example">example</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/信息安全科普">信息安全科普</a></li>
+            
+            <li><a class="fancy-nav" href="/pages/about.html">about</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <main id="start">
+        <div class="articles">
+            <article>
+    <header>
+        
+        <h1>如何用黑客技术打开一扇门？</h1>
+        
+        <div class="post-meta">
+    <small>
+        <time datetime="05 04 2016">
+            05 April, 2016
+        </time>
+        <span class="tag-sep"> | </span>
+        
+        <a class="comment_count" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/HID#disqus_thread"
+           data-disqus-identifier="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/HID"></a>
+        <span class="tag-sep"> | </span>
+        
+        <nav class="tags">
+    <ul>
+        
+        <li><a href="/tags/传媒信安.html">传媒信安</a><span>&nbsp;&nbsp;</span></li>
+        
+    </ul>
+</nav>
+
+    </small>
+</div>
+
+    </header>
+    <p><img src="http://127.0.0.1:4000//resources/images/zz1.jpg" alt="" /></p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/zz2.jpg" alt="" /></p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/zz3.jpg" alt="" /> 
+开门开门开门啊！！！你还在为苦苦打不开一扇门而苦恼吗？什么？你们现在都用门禁了？小编就曾经被中蓝计算机实验室的门禁拒之门外过，今天小编就来扒一扒摧毁门禁的那些坑！</p>
+
+<p>说到门禁系统就不得不说HID Global，HID Global是深受全世界信赖的安全身份验证解决方案供应商，它帮助全球数百万客户制作、管理和使用安全的身份证件。
+<img src="http://127.0.0.1:4000//resources/images/zz4.png" alt="" /></p>
+
+<p>全球各种公司企业，都在利用智能卡、智能手机和其它设备的强大功能来建立门禁系统，每个读卡器连接到一扇门控制器，用来控制所有门的功能包括锁定，解锁，时间表，警报等。</p>
+
+<p>近年来，这些门控制器都添加了网络接口，这样就可以进行远程管理。很方便推出信用卡数据库更新和时间表，但随着网络上的一切，都有一个远程利用的漏洞的风险。</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/zz5.jpg" alt="" /></p>
+
+<p>安全人员发现HID两个旗舰门控制器VertX和Edge，在它们的管理协议上存在设计漏洞，允许黑客在设备上运行远程命令，获得root控制权。据研究人员表示，这两个设备都运行一个称为discoveryd的特殊守护进程，响应 4070 端口上的 UDP 数据包请求，回应自己的信息，像是锁定状态，报警状态，固件版本，设备类型，MAC地址，以及通用位置信息等等。该服务可以用于更改状态LED设备上通过对system()函数调用的闪烁模式，system()函数调用就会有溢出的可能。而该服务未能对用户提供的输入进行有效检查，其后果就是允许攻击者通过数据包，将任意命令注入到该漏洞，同时discoveryd又支持root模式运行，黑客可以远程使用root用户权限执行任意代码，并且破坏系统。</p>
+
+<p>UDP协议不同与TCP是面向非连接服务的，这样的攻击代码，网上随处可见，这也使得该漏洞形成的安全威胁大大激增。
+一旦，攻击者控制了HID控制器，他们可以实现门的锁定和解锁，以及激活和取消警报。</p>
+
+<p>打开任何HID门禁控制器，只需要一个UDP数据包！！！</p>
+
+<p>实现像黑客电影中远程控制涉密机构的门禁系统开启关闭的情景，只需要一个UDP数据包！！！</p>
+
+<p>轻松开启保密的大门，只需要一个UDP数据包！！！</p>
+
+<p>但其实小编在写今天的题目“如何用黑客技术打开一扇门？”时，突然有感而发，几年前小编来到这个学校学习计算机，以为以后小编会成为电视上那种很牛逼的黑客，后来发现原来计算机科学与技术跟黑客好像没有毛线关系~~~</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/zz6.png" alt="" /></p>
+
+<p>然后小编大学毕业后又读了信息安全的研究生，以为这回终于能成为一个牛逼闪闪的黑客了吧？？但后来发现小编还是太年轻，信息安全并不仅仅是影视剧里那些无所不能的黑客，我们学习黑客技术，揭开黑客技术的神秘面纱，但不滥用，用学到的技术保护大众，维护网络空间安全。小编现在已经觉醒了！！不憧憬当一个牛逼闪闪的黑客了，小编为是一个安全人自豪！！</p>
+
+<p>生活中有很多网络，信息安全的常识，你可以不研究安全，但了解安全一定是非常有必要的！</p>
+
+<p>你离信息安全其实也只有一扇门的距离，也许关注我们你就能打开这扇门，从另一个角度看看这个世界！！</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/zz7.jpg" alt="" /></p>
+
+<p>小编等你打开这扇门~~~~</p>
+
+    <footer>
+        
+        <div id="disqus_thread"></div>
+<script>
+    /**
+     * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    var disqus_developer = 1;
+    var disqus_config = function () {
+        this.page.url = 'http://localhost:4000/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/HID';
+        this.page.identifier = '/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/HID';
+        this.page.title = "如何用黑客技术打开一扇门？";
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        
+    </footer>
+</article>
+
+        </div>
+    </main>
+        <nav class="paginator">
+    <ul>
+        
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/mr-robots-hacking-tools">&lt;&nbsp;Previous</a></li>
+        
+        <li class="sep">&nbsp;</li>
+        <li><a class="fancy-nav" href="#">Top</a></li>
+        <li class="sep">&nbsp;</li>
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/data-stolen">Next&nbsp;&gt;</a></li>
+        
+        
+    </ul>
+</nav>
+
+    <footer>
+        
+<blockquote id="footer-quote">
+    <p>
+        
+        Some fancy quote
+        
+    </p>
+    <footer>
+        <cite>
+        
+        - John Doe
+        
+    </cite>
+    </footer>
+</blockquote>
+
+<div id="footer-main">
+    <small>
+        &copy; 2016 Name Surname. ALL RIGHTS RESERVED.
+    </small>
+</div>
+
+    </footer>
+</div>
+
+</body>
+</html>

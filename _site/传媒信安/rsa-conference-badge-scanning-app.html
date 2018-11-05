@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        
+        RSA 大会徽章扫描应用程序爆出漏洞
+        
+    </title>
+    
+    <meta name="description" content="今年参加在2016年RSA大会将有一个丑陋的惊喜，许多厂商都提供了三星Galaxy S4智能手机，在Google Play上运行一个提供的特殊的Android应用程序，允许他们通过扫描他们的徽章来跟踪访问者的踪迹。"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="/resources/css/main.css"/>
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+    
+
+    
+</head>
+<body style="background: url('/resources/images/main_front.jpg') no-repeat fixed;
+                            background-size: cover">
+<div id="wrapper">
+    <header>
+    <nav id="main-nav">
+        <ul>
+            <li><a class="fancy-nav" href="/index.html">home</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/最新公告">最新公告</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/传媒信安">传媒信安</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/课程体系">课程体系</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/example">example</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/信息安全科普">信息安全科普</a></li>
+            
+            <li><a class="fancy-nav" href="/pages/about.html">about</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <main id="start">
+        <div class="articles">
+            <article>
+    <header>
+        
+        <h1>RSA 大会徽章扫描应用程序爆出漏洞</h1>
+        
+        <div class="post-meta">
+    <small>
+        <time datetime="04 03 2016">
+            04 March, 2016
+        </time>
+        <span class="tag-sep"> | </span>
+        
+        <a class="comment_count" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/rsa-conference-badge-scanning-app#disqus_thread"
+           data-disqus-identifier="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/rsa-conference-badge-scanning-app"></a>
+        <span class="tag-sep"> | </span>
+        
+        <nav class="tags">
+    <ul>
+        
+        <li><a href="/tags/传媒信安.html">传媒信安</a><span>&nbsp;&nbsp;</span></li>
+        
+    </ul>
+</nav>
+
+    </small>
+</div>
+
+    </header>
+    <p><strong>BLUEBOX安全的研究人员发现，在2016年的RSA大会上，使用的徽章扫描应用程序包含了一个硬编码的默认密码</strong>
+<img src="http://127.0.0.1:4000//resources/images/Q5.jpg" alt="" /></p>
+
+<p>2016年的RSA大会将给参加者一个独特的惊喜。许多厂商都提供了三星Galaxy S4智能手机，并在其Google Play上运行一个特殊的Android应用程序，允许他们通过扫描他们的徽章来跟踪访问者的踪迹。</p>
+
+<p>然而除了扫描徽章外，移动扫描不能用于扫描其他任何东西，除非管理员使用密码进行了解锁。这种工作模式也被称为“kiosk模式”。</p>
+
+<p>BLUEBOX安全的安全专家下载并分析了该扫描应用程序，发现作者嵌入在纯文本的源代码的默认密码。</p>
+
+<p>“当我们使用密码时，我们能够获得kiosk应用的设置权限。相反的，当我们获得设备的系统设置权限时，我们就能够将设备设置为开发模式，进而获得该设备的所有权限”，BLUEBOX安全的研究人员在Securityweek.com里说，“这一切都是关联的，因为如果我们能做到这一点，攻击者也可以做到这一点，使他们可以控制设备，拉取设备的任何数据，或安装恶意软件来窃取更多的数据。”</p>
+
+<p>“我们推测，嵌入在应用程序中的默认代码在这里作为一种机制，使得即使管理员定义的密码丢失，管理员仍然可以管理设备。然而，这种将密码嵌入到应用程序的出厂编号中的方法是一个荒谬的开发实践方法，特别是那些未加密和未混淆的密码”，专家如是说。</p>
+
+<p>虽然在这个特殊的漏洞中，没有产生对最终用户的严重风险，但在带有硬编码凭据的移动应用程序中却是很常见。黑客可以通过嵌入密码来获取设备的控制权限，并窥探受害者或将其运行于移动僵尸网络中。</p>
+
+<p>类似的事情已经发生在2014年的时候，当时IOActive的专家就发现了一些影响RSA大会Android应用程序的漏洞，例如信息披露问题。</p>
+
+<p>设计安全性对移动应用程序开发是必要的，遗憾的是由于快速的移动应用开发工具的迅速推广，发布一个移动应用程序变成了一件很容易的事情。但在大多数情况下，发布者却完全忽略了应用程序的安全要求。</p>
+
+<p>奇怪的是，这种事情竟然会发生在全是安全领域最顶级专家参与的会议上。</p>
+
+<p><strong>参考资料：</strong></p>
+
+<p><a href="http://securityaffairs.co/wordpress/44981/hacking/rsa-conference-badge-scanning-app.html">Researchers at Bluebox Security discovered that the badge scanning application used at the RSA Conference 2016 includes a hardcoded default password.</a></p>
+
+    <footer>
+        
+        <div id="disqus_thread"></div>
+<script>
+    /**
+     * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    var disqus_developer = 1;
+    var disqus_config = function () {
+        this.page.url = 'http://localhost:4000/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/rsa-conference-badge-scanning-app';
+        this.page.identifier = '/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/rsa-conference-badge-scanning-app';
+        this.page.title = "RSA 大会徽章扫描应用程序爆出漏洞";
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        
+    </footer>
+</article>
+
+        </div>
+    </main>
+        <nav class="paginator">
+    <ul>
+        
+        
+        <li><a class="fancy-nav" href="/%E8%AF%BE%E7%A8%8B%E4%BD%93%E7%B3%BB/windows-tutorial">&lt;&nbsp;Previous</a></li>
+        
+        <li class="sep">&nbsp;</li>
+        <li><a class="fancy-nav" href="#">Top</a></li>
+        <li class="sep">&nbsp;</li>
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/encryption-keys-android-and-ios">Next&nbsp;&gt;</a></li>
+        
+        
+    </ul>
+</nav>
+
+    <footer>
+        
+<blockquote id="footer-quote">
+    <p>
+        
+        Some fancy quote
+        
+    </p>
+    <footer>
+        <cite>
+        
+        - John Doe
+        
+    </cite>
+    </footer>
+</blockquote>
+
+<div id="footer-main">
+    <small>
+        &copy; 2016 Name Surname. ALL RIGHTS RESERVED.
+    </small>
+</div>
+
+    </footer>
+</div>
+
+</body>
+</html>

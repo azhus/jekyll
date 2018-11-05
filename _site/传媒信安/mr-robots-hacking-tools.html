@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        
+        看剧学安全——扒一扒《钢铁侠》中出现的C语言程序代码
+        
+    </title>
+    
+    <meta name="description" content="今天给大家介绍一部2015年被《福布斯》杂志誉为“今夏最棒剧集，有望成为当代经典电视剧”——《Mr. Robot》，翻译成中文为《机器人先生》或者《黑客军团》。"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="/resources/css/main.css"/>
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+    
+
+    
+</head>
+<body style="background: url('/resources/images/main_front.jpg') no-repeat fixed;
+                            background-size: cover">
+<div id="wrapper">
+    <header>
+    <nav id="main-nav">
+        <ul>
+            <li><a class="fancy-nav" href="/index.html">home</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/最新公告">最新公告</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/传媒信安">传媒信安</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/课程体系">课程体系</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/example">example</a></li>
+            
+            <li><a class="fancy-nav" href="/categories/信息安全科普">信息安全科普</a></li>
+            
+            <li><a class="fancy-nav" href="/pages/about.html">about</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <main id="start">
+        <div class="articles">
+            <article>
+    <header>
+        
+        <h1>看剧学安全——扒一扒《钢铁侠》中出现的C语言程序代码</h1>
+        
+        <div class="post-meta">
+    <small>
+        <time datetime="01 04 2016">
+            01 April, 2016
+        </time>
+        <span class="tag-sep"> | </span>
+        
+        <a class="comment_count" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/mr-robots-hacking-tools#disqus_thread"
+           data-disqus-identifier="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/mr-robots-hacking-tools"></a>
+        <span class="tag-sep"> | </span>
+        
+        <nav class="tags">
+    <ul>
+        
+        <li><a href="/tags/传媒信安.html">传媒信安</a><span>&nbsp;&nbsp;</span></li>
+        
+    </ul>
+</nav>
+
+    </small>
+</div>
+
+    </header>
+    <p>啦啦啦，啦啦啦，我是看剧的信安君~</p>
+
+<p>今天给大家介绍一部2015年被《福布斯》杂志誉为“今夏最棒剧集，有望成为当代经典电视剧”——《Mr. Robot》，翻译成中文为《机器人先生》或者《黑客军团》。</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/A1.jpg" alt="" /></p>
+
+<p>你曾想象过自己变成超级英雄吗？你曾想过要为这个世界的不公平伸张正义吗？《黑客军团》中的艾略特•奥尔德森正是生活在这样的梦想里。</p>
+
+<p>片花：<a href="/storage/app/media/wx/Mr.%20Robot-%20Official%20Trailer%20-%20New%20Series%20on%20USA.mp4">Mr. Robot- Official Trailer - New Series on USA</a></p>
+
+<p>奥尔德森(拉米•马雷克饰)是个智商超高，有点神经质，对社交一窍不通的的码农，这不就是别人印象中的我们程序猿的样子么？！T^T</p>
+
+<p>白天他在一家网络安全公司工作。晚上，他变身为一名黑客，入侵大公司的账户，调查它们的罪行，然后报告警方。</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/A2.jpg" alt="" /></p>
+
+<p>所以说，咖啡屋真的是一个非常神奇的地方，不仅进去喝咖啡的顾客要防止黑客通过wifi窃取信息，咖啡店老板把网速设置得太好也会引起黑客的好奇昂~</p>
+
+<p>这部剧最大的看点就是剧中几乎所有用到的黑客技术都是较为真实的，并且是可以找到这个黑客工具或者其中的破解方法是真实存在的。</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/A3.jpg" alt="" /></p>
+
+<p>例如主人公 Elliot 使用 Kali Linux，它是一个完整的开源并免费的操作系统，并集成了常用的渗透测试和黑客攻击工具；他告诉我们 Tor 网络，虽然是匿名网络，但依然不安全；使用特殊的蓝牙扫描器（或 btscanner）就能够秘密的从另一部手机中提取信息，甚至不需要与手机配对；他还会利用很多社会工程学的手段来得到一些必要的隐私信息。</p>
+
+<p>下面，我们就扒一扒在剧中在现实生活中出现过的黑客工具：</p>
+
+<blockquote>
+  <p>1、Kali Linux：不像身边的绝大多数人，艾略特（Elliot）和他的同伴都使用Kali Linux。这是一个完整的开源并免费的操作系统，并集成了常用的渗透测试和黑客攻击工具。</p>
+
+  <p>2、wget：wget是一个用来入侵Web服务器并拦截敏感数据的计算机程序。它基于shellshock漏洞对目标进行入侵。（FB注释：wget名称的由来是“World Wide Web”与“get”的结合，它是从网络上自动下载文件的自由工具，支持通过HTTP、HTTPS、FTP三个最常见的TCP/IP协议下载，wget在剧中被用来针对shellshock（破壳）漏洞入侵WEB服务器）</p>
+
+  <p><img src="http://127.0.0.1:4000//resources/images/A4.jpg" alt="" /></p>
+
+  <p>3、Canbus Hacking：的确，针对汽车的黑客攻击在最近几年迅速发展，而Candump的使用就是最好的证明，利用该工具能够获取相应的信息。</p>
+
+  <p>4、用于攻击设备的USB：将USB闪存扔在一个停车的地方，就是为了让无知的路人拾起并开始攻击的第一步。在USB被插入到受害者的电脑中时，真正的攻击就开始了。</p>
+
+  <p>5、蓝牙扫描器：蓝牙扫描器（或btscanner）用于通过蓝牙从一部手机中提取信息，甚至不需要与手机配对就能提取信息。</p>
+
+  <p>6、Bluesniff：类似于蓝牙扫描器，Bluesniff是另一个与蓝牙扫描器功能相同的黑客工具。</p>
+
+  <p>7、Meterpreter：Meterpreter是Metasploit框架，它可以为用户提供独特的灵活性，并允许完整的及隐秘的入侵。</p>
+
+  <p>8、社会工程学工具箱（SET）：这是一个框架，它允许针对社会工程学进行更简单、更容易的攻击。《Mr. Robot》中的一个这样的攻击就是短信欺诈功能。</p>
+
+  <p>9、Netscape Navigator（网景导航器）：当然，没有黑客会使用这样的Web浏览器。然而，它却是记录艾略特如何开始攻击的的一个记录器，并且它表达这部电视剧的承诺，即向观众提供真正的知识和信息。</p>
+</blockquote>
+
+<p>虽然不同的人对这部剧的评价褒贬不一，但看到这些真实存在的技术被用在了作为休闲娱乐文化传播载体的电视剧中时，至少切身感受到IT行业，尤其是信息安全行业人员正在在历史舞台上被人们所关注，并发挥越来越重要的作用，这也是这部剧制作时的用心之处。</p>
+
+<p>每一个安全人员心中必定怀抱着和平的梦想。在奥尔德森的眼里，他的敌人就是那些操控国家金融的精英分子，那些富人中的富人，他们未经授权却扮演着上帝的角色。而他自己却是千万安全公司中的一名“伪自由”的员工，他内心中“fsociety”其实也只是对自己所遭遇过的伤害进行的自我反击。</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/A5.jpg" alt="" /></p>
+
+<p>虽然这部剧在一定程度上有抹黑黑客群体形象的嫌疑，但听到奥尔德森的这段独白时，小编想起了小时候自己一个人在家等爸爸妈妈下班的情景，很是心疼惹~~你看到了他的骄纵作恶，小编却看到了他的孤独……否则，当神秘的地下黑客组织的首领罗伯特先生(Mr. Robot)招募奥尔德森摧毁雇佣自己的公司时，他又怎么会如此的义无反顾的觉得找到同类了呢？</p>
+
+<p><img src="http://127.0.0.1:4000//resources/images/A6.jpg" alt="" /></p>
+
+<p>猛然惊觉，原来小编是这样走上了程序媛的不归路的啊！T^T不说了，说多了都是泪，祝愿每一只程序猿都能够被世界温柔相待……</p>
+
+<p>清明小长假，如果不想出去和人人人从从众挤景区，那就找个时间刷一下这部剧吧，相信看完你对黑客甚至自己的隐私又会有不一样的看法。</p>
+
+<p>参考文献：</p>
+
+<p>1.<a href="http://securityaffairs.co/wordpress/40587/hacking/mr-robots-hacking-tools.html">Check out the hacking tools used by Mr. Robot and see why the display of these tools is as realistic as possible.</a></p>
+
+<p>2.<a href="http://www.freebuf.com/news/80383.html">悉数美剧《黑客军团》中的黑客工具</a>
+​</p>
+
+    <footer>
+        
+        <div id="disqus_thread"></div>
+<script>
+    /**
+     * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    var disqus_developer = 1;
+    var disqus_config = function () {
+        this.page.url = 'http://localhost:4000/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/mr-robots-hacking-tools';
+        this.page.identifier = '/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/mr-robots-hacking-tools';
+        this.page.title = "看剧学安全——扒一扒《钢铁侠》中出现的C语言程序代码";
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        
+    </footer>
+</article>
+
+        </div>
+    </main>
+        <nav class="paginator">
+    <ul>
+        
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/google-gmail">&lt;&nbsp;Previous</a></li>
+        
+        <li class="sep">&nbsp;</li>
+        <li><a class="fancy-nav" href="#">Top</a></li>
+        <li class="sep">&nbsp;</li>
+        
+        <li><a class="fancy-nav" href="/%E4%BC%A0%E5%AA%92%E4%BF%A1%E5%AE%89/HID">Next&nbsp;&gt;</a></li>
+        
+        
+    </ul>
+</nav>
+
+    <footer>
+        
+<blockquote id="footer-quote">
+    <p>
+        
+        Some fancy quote
+        
+    </p>
+    <footer>
+        <cite>
+        
+        - John Doe
+        
+    </cite>
+    </footer>
+</blockquote>
+
+<div id="footer-main">
+    <small>
+        &copy; 2016 Name Surname. ALL RIGHTS RESERVED.
+    </small>
+</div>
+
+    </footer>
+</div>
+
+</body>
+</html>
